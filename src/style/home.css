@@ -1,0 +1,30 @@
+/* .menu {
+
+} */
+.grid-muvi{
+  display: flex;
+  flex-direction: row;
+}
+.main-muvi {
+  display: flex;
+  flex-direction: row;
+    text-align: center;
+}
+#main-muvi{
+  display: flex;
+  flex-direction: row;
+}
+.title-muvi {
+ color: #F8F9F6;
+  ;
+}
+.muvi-date {
+  color: #F8F9F6;
+
+  text-align: center;
+}
+
+.img-muvi {
+  border-radius: 10px;
+  border: 1px solid;
+}

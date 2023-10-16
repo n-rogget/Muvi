@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './app.css'
-import Header from './App'
-import './index.css'
+import './style/header.css'
+import './style/index.css'
+import App from './app'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    < Header />
+    < App />
+  
   </React.StrictMode>,
 )
