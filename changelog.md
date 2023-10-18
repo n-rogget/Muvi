@@ -14,6 +14,5 @@ Vista home con peliculas, buscador, filtros y paginación
 ### Fixed
 
 
-
 ### Removed
 

@@ -11,7 +11,7 @@ import { MovieData } from "../data/data";
     };
 
     fetch(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=horror`,
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27%7C53`,
       options
     )
       .then((response) => response.json())

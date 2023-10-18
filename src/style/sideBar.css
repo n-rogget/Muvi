@@ -1,31 +1,42 @@
 .side {
-  position: sticky;
-  position: -webkit-sticky; /* Safari */
-  
+display: grid;  
+grid-template-rows: 12% 5% 15%;
+width: 10;
+align-content: flex-start;
 }
 .logoHome {
   width: 150px;
-  height: 120px;
-  margin-left: 30px;
-  position: sticky;
-  position: -webkit-sticky; /* Safari */
-  top: 10px;
-  z-index: 10;
+  height: 150px;
+margin-left: 35px;
+  margin-top: 20px;
+
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 44px -2px rgba(255,255,255,1);
+  -moz-box-shadow: 0px 0px 44px -2px rgba(255,255,255,1);
+  box-shadow: 0px 0px 44px -2px rgba(255,255,255,1);
+/*   position: sticky;
+  position: -webkit-sticky;
+  top: 10px; */
+/*   z-index */
 }
 .filter {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  background-color: #212020;
+  background-color: #BA2B2B;
   color: #F8F9F6;
-  width: 150px;
-  padding: 10px 15px;
-  border: 1px solid #F8F9F6;
-  text-align: center;
+ width: 75%;
+  padding: 5px 15px;
+/*   border: 1px solid #F8F9F6;
+ */  text-align: center;
   border-radius: 0 0 10px 10px;
-/*   display: flex;
-  flex-direction: column; */
+  padding: 10px 15px;
+  /*   border: 1px solid #F8F9F6;
+   */  
+   -webkit-box-shadow: 0px 13px 20px 4px rgba(5,5,5,0.98);
+   -moz-box-shadow: 0px 13px 20px 4px rgba(5,5,5,0.98);
+   box-shadow: 0px 13px 20px 4px rgba(5,5,5,0.98);
   margin-bottom: 10px;
 }
 
@@ -35,11 +46,11 @@
   display: flex;
   flex-direction: column;
   width: 180px;
-  position: sticky;
-  position: -webkit-sticky; /* Safari */
-  top: 200px;
-  z-index: 10;
-}
+ /*  position: sticky;
+  position: -webkit-sticky; 
+  top: 200px; */
+/*  // z-index: 10;
+ */}
 h1 {
   color: #F8F9F6;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -54,10 +65,11 @@ h2 {
   font-size: 14px;
   font-weight: normal;
  margin: 4px;
+ 
 }
 h2:hover {
-  color: #b01616;
-  transition: all 0.5s ease-in-out;
+  color: #212020 ;
+  transition: all 0.4s ease-in-out;
   transform: scale(1.2)
 }
 .imgSidebar {
@@ -70,14 +82,17 @@ h2:hover {
   display: flex;
   flex-direction: row;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
-  background-color: #212020;
+  background-color: #BA2B2B;
   color: #F8F9F6;
-  width: 150px;
+  width: 75%;
   padding: 10px 15px;
-  border: 1px solid #F8F9F6;
-  border-radius: 10px 10px 0 0;
+/*   border: 1px solid #F8F9F6;
+ */  border-radius: 10px 10px 0 0;
+  -webkit-box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
+-moz-box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
+box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
 }
 
 .btn:hover::after {
@@ -86,16 +101,24 @@ h2:hover {
 
 .btn {
   color: #07040c;
-  transition: all 0.5s ease-in-out;
+  background-color: #F8F9F6 ;
+border-radius: 5px;
+height: 30px;
+width: 90px;
+margin: 5px;
+border: none;
+-webkit-box-shadow: 0px 0px 5px 3px rgba(77,18,18,1);
+-moz-box-shadow: 0px 0px 5px 3px rgba(77,18,18,1);
+box-shadow: 0px 0px 5px 3px rgba(77,18,18,1);
 }
 
 .btn:hover {
-  color: #b01616;
-  transition: all 0.5s ease-in-out;
+  color: #BA2B2B ;
+  transition: all 0.4s ease-in-out;
 }
 .search-icon {
   position: absolute;
-  right: 30px;
+  right: 6px;
   top: 45%;
   transform: translateY(-50%);
   width: 20px;
@@ -108,24 +131,26 @@ h2:hover {
   position: relative;
   float: left;
   padding: 0px;
-  margin-left: 10px;
-  margin-top: 5px;
+ margin-left: 30px;
+  margin-top: 20px;
   border-radius: 8px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
   width: 150px;
   height: 30px;
   justify-content: center;
-  width: 200px;
-  position: sticky;
-  position: -webkit-sticky; /* Safari */
-  top: 150px;
-  z-index: 10;
+  -webkit-box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
+-moz-box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
+box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
+ /*  position: sticky;
+  position: -webkit-sticky; 
+  top: 150px; */
+ /*  z-index: 10; */
 }
 .input-style {
   width: 150px;
   height: 20px; 
   font-size: 15px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #BA2B2B;
   padding: 2% 2% ;
   border: none;
   border-radius: 3px;

@@ -12,7 +12,7 @@ export default function Sidebar() {
   return (
     <section className="side">
       <img
-        src="src/images/Muvi (9).png"
+        src="src/images/Muvi (10).png"
         alt="Logo Muvi"
         className="logoHome"
       />
