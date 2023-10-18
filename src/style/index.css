@@ -4,6 +4,7 @@
 } */
 body {
   background: #212020;
+padding: 0%;
 }
 button {
   cursor: pointer;
@@ -27,4 +28,7 @@ header {
 button:hover {
   transform: scale(1.1);
 }
-
+#generalSection {
+  display: flex;
+  flex-direction: row;
+}

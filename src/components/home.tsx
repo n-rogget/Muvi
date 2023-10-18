@@ -16,7 +16,7 @@ export default function Home({ movies }: SeccionPrincipalProps) {
               alt=""
             />
           </a>
-          <p className="title-movie">{movie.title}</p>
+          <p className="title-muvi">{movie.title}</p>
           <p className="muvi-date">
             {new Date(movie.release_date).getFullYear()}
           </p>

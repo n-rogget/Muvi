@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { MovieData } from "./data/data";
 import { getMovies } from "./config/config";
 import  Sidebar  from "./components/sideBar";
-import Header from "./components/header";
 import Home from "./components/home";
 import Pages from "./components/pages";
 
@@ -19,11 +18,8 @@ function App() {
  
   return (
     <section id="generalSection">
-      <Header />
+      <Sidebar />
       <main>
-        <section className="header">
-        </section>
-        <Sidebar />
         <section className="menu">
           <Home movies={movies} />
           <Pages setPage={setPage} page={page} />
