@@ -11,11 +11,20 @@
   height: 40px;
   height: 35npmpx;
   background-color: rgba(214, 29, 35, 0);
-  border: none;
-  color: #F8F9F6;
+/*   border: none;
+ */  color: #F8F9F6;
   font-size: 16px;
-  border:1px solid #F8F9F6;
+  border:1px solid #000000;
   text-align: center;
+  color: #07040c;
+  background-color: #F8F9F6 ;
+border-radius: 5px;
+height: 30px;
+width: 90px;
+margin: 5px;
+-webkit-box-shadow: 0px 0px 5px 3px #F8F9F6;
+-moz-box-shadow: 0px 0px 5px 3px #F8F9F6;
+box-shadow: 0px 0px 5px 1px #F8F9F6;
 }
 .pages button:hover {
   color: #b01616;
