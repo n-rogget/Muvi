@@ -8,9 +8,13 @@ export type MovieData = {
   overview: string;
   popularity: number;
   poster_path: string;
-  release_date: number;
-  title: number;
+  release_date: string;
+  title: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+export type GenreData = {
+  id: number;
+  name: string;
 };

@@ -18,7 +18,7 @@ function App() {
  
   return (
     <section id="generalSection">
-      <Sidebar />
+      <Sidebar setMovies={setMovies}  />
       <main>
         <section className="menu">
           <Home movies={movies} />

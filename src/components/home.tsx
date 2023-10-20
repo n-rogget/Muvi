@@ -7,7 +7,7 @@ interface SeccionPrincipalProps {
 export default function Home({ movies }: SeccionPrincipalProps) {
   return (
     <section className="grid-muvi">
-      {movies?.map((movie: MovieData, i: number) => (
+      {movies.map((movie: MovieData, i: number) => (
         <section className="main-muvi" id='main-muvi' key={i}>
           <a href="#" className="link-muvi">
             <img

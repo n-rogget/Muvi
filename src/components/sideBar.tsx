@@ -1,25 +1,46 @@
-/* export function SidebarOpened() {
-  return (
-<section id="mySidebar" className="sidebar">
-  <a href="javascript:void(0)" className="closebtn">×</a>
-  <a href="#">Ordenar por</a>
-  <a href="#">Filtrar por</a>
-</section>
-  );
-} */
-// input type radio 
-export default function Sidebar() {
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from "react";
+import { getGenres, getMovies } from "../config/config";
+import { GenreData, MovieData } from "../data/data";
+
+export default function Sidebar({ setMovies }) {
+  const [genreId, setGenreId] = useState<number | null>(null);
+  const [genres, setGenres] = useState<GenreData[]>([]);
+  const [filteredMovies, setFilteredMovies] = useState<MovieData[]>([]);
+
+  useEffect(() => {
+    getGenres()
+      .then((genres) => {
+        setGenres(genres);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  const handleFilterByGenre = (id: number) => {
+    setGenreId(id);
+    getMovies({ page: 1, genreId: id })
+      .then((movies) => {
+        console.log("Películas filtradas:", movies)
+        setFilteredMovies(movies);
+        setMovies(movies)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+  };
   return (
     <section className="side">
       <img
         src="src/images/Muvi (10).png"
         alt="Logo Muvi"
         className="logoHome"
+        onClick={() => window.location.reload()}
       />
       <section className="search-container">
         <img className="search-icon" src="src/images/icono-lupa.png" alt="Buscar" />
         <input type="text" className="input-style" id="muviSearch" placeholder="... Busca tu película"></input>
-
       </section>
       <section id="main">
         <section className="order">
@@ -40,8 +61,8 @@ export default function Sidebar() {
             className="imgSidebar" /> Filtrar por  </section>
         <section className="filter">
           <h1> Categoría </h1>
-          <button className="btn">Terror</button>
-          <button className="btn">Suspenso</button>
+          <button id='btnTerror' className="btn" onClick={() => handleFilterByGenre(27)}>Terror</button>
+          <button id='btnSuspenso' className="btn" onClick={() => handleFilterByGenre(53)} >Suspenso</button>
           <h1> Año de estreno </h1>
           <button className="btn">2020 - 2023</button>
           <button className="btn">2000 - 2019</button>
@@ -51,9 +72,12 @@ export default function Sidebar() {
           <button className="btn">1920 - 1939</button>
           <button className="btn">1900 - 1919</button>
         </section>
+
       </section>
     </section>)
 }
+
+
 
 /* export function OpenNav() {
   SidebarOpened.style.width = "250px";
