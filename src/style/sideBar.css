@@ -74,6 +74,9 @@ h2:hover {
   transition: all 0.4s ease-in-out;
   transform: scale(1.2)
 }
+h2:focus {
+  color: #212020 ;
+}
 .imgSidebar {
   width: 20px;
   height: 20px;
@@ -117,6 +120,10 @@ box-shadow: 0px 0px 5px 3px rgba(77,18,18,1);
 .btn:hover {
   color: #BA2B2B ;
   transition: all 0.4s ease-in-out;
+}
+.btn:focus {
+  color: #BA2B2B ;
+
 }
 .search-icon {
   position: absolute;

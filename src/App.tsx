@@ -6,11 +6,14 @@ import Home from "./components/home";
 import Pages from "./components/pages";
 
 function App() {
+  const [allMovies, setAllMovies] = useState<MovieData[]>([]); // Estado para todas las películas
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [page, setPage] = useState<number>(1);
+
   useEffect(() => {
-    getMovies(page)
-      .then((data: MovieData[]) => {
+    getMovies({ page: page })
+    .then((data: MovieData[]) => {
+      setAllMovies(data);
         setMovies(data);
       })
       .catch((error) => console.error(error));
@@ -18,7 +21,7 @@ function App() {
  
   return (
     <section id="generalSection">
-      <Sidebar setMovies={setMovies}  />
+      <Sidebar setMovies={setMovies} moviesToSort={allMovies} />
       <main>
         <section className="menu">
           <Home movies={movies} />
