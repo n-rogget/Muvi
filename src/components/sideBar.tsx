@@ -3,23 +3,46 @@ import { useEffect, useState } from "react";
 import { getGenres, getMovies } from "../config/config";
 import { GenreData, MovieData } from "../data/data";
 
+// Esta es una función exportada llamada "Sidebar" que acepta un objeto de propiedades como argumento.
+
 export default function Sidebar({ 
   setMovies, 
   moviesToSort,
 onSortAZ,
 onSortZA, 
+onSortNew,  // Agregar función para ordenar por fecha nueva
+  onSortOlder,  // Agregar función para ordenar por fecha antigua
+
 }: { 
   setMovies: (movies: MovieData[]) => void;
    moviesToSort: MovieData[];
    onSortAZ: () => void;
    onSortZA: () => void;
-  }) {
+   onSearch: (searchText: string) => void; // Define la prop onSearch
+   onSortNew: () => void;  // Agregar función para ordenar por fecha nueva
+   onSortOlder: () => void;  // Agregar función para ordenar por fecha antigua
+ }) {
+  //La línea de código crea un estado llamado "searchText" 
+  //y una función para actualizar ese estado llamada "setSearchText".
+  // El valor inicial del estado es una cadena vacía. 
+  //Este estado se utiliza para almacenar el texto de búsqueda ingresado por el usuario en un campo de entrada.
   const [searchText, setSearchText] = useState("");
+  // La función handleSearchChange es una función que se ejecuta cuando hay un cambio en el campo de entrada.
+  // Recibe un evento de cambio como argumento, que contiene información sobre el cambio realizado en el campo de entrada.
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //asigna el valor del campo de entrada a la variable "searchText". 
+    //Esto se hace utilizando el evento "e" que contiene información sobre el cambio realizado en el campo de entrada.
     const searchText = e.target.value;
+    // actualiza el estado searchText con el valor del campo de entrada. 
+    // Esto se hace utilizando la función setSearchText, que es proporcionada por el hook useState.
+    // Al actualizar el estado, se desencadena una re-renderización del componente 
+    // para reflejar los cambios en la interfaz de usuario.
     setSearchText(searchText);
 
     // Filtra las películas en función del texto de búsqueda
+    // actualiza el estado searchText con el valor del campo de entrada.
+    // Esto se hace utilizando la función setSearchText, que es proporcionada por el hook useState.
+    // Al actualizar el estado, se desencadena una re-renderización del componente para reflejar los cambios en la interfaz de usuario.
     const filteredMovies = moviesToSort.filter((movie) =>
       movie.title.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -27,16 +50,28 @@ onSortZA,
     // Actualiza las películas en Home
     setMovies(filteredMovies);
   }
+  //La función handleSortAZ se ejecuta cuando se realiza una acción de ordenar en orden ascendente.
       const handleSortAZ = () => {
         onSortAZ();
       };
     const handleSortZA = () => {
       onSortZA();
   };
+  // setGenreId que inicialmente tiene un valor de null. 
+  // Esta variable se utiliza para almacenar el ID del género seleccionado en la aplicación.
     const [, setGenreId] = useState<number | null>(null);
+    //  El valor inicial de la variable es un array vacío de tipo GenreData[]. 
+    // El primer elemento del array devuelto por useState se ignora,
+    // ya que solo nos interesa la función para actualizar el estado de genres.
     const [, setGenres] = useState<GenreData[]>([]);
+    // El valor inicial de la variable es un array vacío de tipo MovieData[]. 
+    //La función setFilteredMovies se utiliza para actualizar el estado de la variable 
+    //y desencadenar una re-renderización del componente cuando sea necesario.
     const [, setFilteredMovies] = useState<MovieData[]>([]);
 
+    //seEffect se utiliza para ejecutar efectos secundarios en el componente, 
+    // como realizar llamadas a API o suscribirse a eventos.
+    // En este caso, la función pasada como argumento se ejecutará después de que el componente se haya renderizado por primera vez.
     useEffect(() => {
       getGenres()
         .then((genres) => {
@@ -46,6 +81,7 @@ onSortZA,
           console.error(error);
         });
     }, []);
+    // Esta función se utiliza para filtrar las películas por género en la aplicación.
     const handleFilterByGenre = (id: number) => {
       setGenreId(id);
       getMovies({ page: 1, genreId: id })
@@ -57,6 +93,14 @@ onSortZA,
         .catch((error) => {
           console.error(error);
         });
+    };
+    // La función handleSortNew se utiliza para manejar la acción de ordenar las películas por las más nuevas.
+    const handleSortNew = () => {
+      onSortNew();
+    };
+  
+    const handleSortOlder = () => {
+      onSortOlder();
     };
     /*   const handleFilterByYear = (startYear: number, endYear: number) => {
         getMovies({ page: 1 })
@@ -106,8 +150,8 @@ onSortZA,
           <section className="filter">
             <h2 id="Sortpopular"> Más populares </h2>
             <h2 id='sortLessPopular'> Menos populares </h2>
-            <h2 id="sortNew"> Más nuevas </h2>
-            <h2 id="sortOlder"> Más antiguas </h2>
+            <h2 id="sortNew" onClick={handleSortNew}> Más nuevas </h2>
+            <h2 id="sortOlder" onClick={handleSortOlder}> Más antiguas </h2>
             <h2 id="sortAz" onClick={handleSortAZ} > A - Z </h2>
             <h2 id="sortZa" onClick={handleSortZA}> Z - A </h2>
           </section>

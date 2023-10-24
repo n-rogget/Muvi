@@ -7,59 +7,73 @@ import Pages from "./components/pages";
 
 function App() {
   const [allMovies, setAllMovies] = useState<MovieData[]>([]); // Estado para todas las películas
-  const [movies, setMovies] = useState<MovieData[]>([]);
+  const [filteredMovies, setFilteredMovies] = useState<MovieData[]>([]); // Estado para películas filtradas
   const [page, setPage] = useState<number>(1);
-  const [sortAZ, setSortAZ] = useState<boolean>(true);
+  const [, setSortAZ] = useState<boolean>(false);
+  const [, setSortNew] = useState<boolean>(false);  // Nuevo estado para ordenar por fecha nueva
+  const [, setSortOlder] = useState<boolean>(false);  // Nuevo estado para ordenar por fecha antigua
 
-// El código muestra el uso del hook useEffect en React. 
-//Este hook se ejecuta cada vez que cambia el valor de la variable "page".
-//En este caso, se llama a la función getMovies con un objeto que contiene el número de página actual.
   useEffect(() => {
-    getMovies({ page: page })
-    //Cuando la promesa se resuelve, se ejecuta esta función de devolución de llamada 
-    //que recibe los datos como parámetro. En este caso, los datos son un array de objetos MovieData 
-    //y se establecen en el estado allMovies mediante la función setAllMovies()
+    getMovies({ page: 1 })
       .then((data: MovieData[]) => {
         setAllMovies(data);
-        let filteredMovies = data;
-        // Si la variable sortAZ es verdadera, se ordenan las películas 
-        // en orden alfabético ascendente utilizando el método sort()
-        if (sortAZ) {
-          filteredMovies = filteredMovies.sort((a, b) =>
-            a.title.localeCompare(b.title)
-          );
-        }
-        setMovies(filteredMovies);
+        setFilteredMovies(data); // Inicialmente, todas las películas están visibles
       })
       .catch((error) => console.error(error));
-  }, [page, sortAZ]);
+  }, []);
   const handleSortAZ = () => {
     setSortAZ(true);
     // Ordenar todas las películas
-   const sortedMovies = [...allMovies].sort((a, b) => a.title.localeCompare(b.title));
-    setMovies(sortedMovies); 
+   const sortedMovies = [...filteredMovies].sort((a, b) => a.title.localeCompare(b.title));
+   setFilteredMovies(sortedMovies);
   };
 
   const handleSortZA = () => {
     setSortAZ(false);
     // Ordenar todas las películas
-   const sortedMovies = [...allMovies].sort((a, b) => b.title.localeCompare(a.title));
-    setMovies(sortedMovies);
+   const sortedMovies = [...filteredMovies].sort((a, b) => b.title.localeCompare(a.title));
+   setFilteredMovies(sortedMovies);
   };
 
-  // ...
+  const handleSearch = (searchText: string) => {
+    // Filtra las películas en función del texto de búsqueda en todas las películas
+    const filteredMovies = allMovies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredMovies(filteredMovies);
+  };
+  const handleSortNew = () => {
+    setSortNew(true);
+    setSortOlder(false);
+    const sortedMovies = [...filteredMovies].sort((a, b) =>
+      new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
+    );
+    setFilteredMovies(sortedMovies);
+  };
+
+  const handleSortOlder = () => {
+    setSortOlder(true);
+    setSortNew(false);
+    const sortedMovies = [...filteredMovies].sort((a, b) =>
+      new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
+    );
+    setFilteredMovies(sortedMovies);
+  };
 
   return (
     <section id="generalSection">
       <Sidebar
-        setMovies={setMovies}
-        moviesToSort={allMovies}
-        onSortAZ={handleSortAZ}
-        onSortZA={handleSortZA}
+       setMovies={setFilteredMovies} // Actualizar películas filtradas
+       moviesToSort={allMovies}
+       onSortAZ={handleSortAZ}
+       onSortZA={handleSortZA}
+       onSearch={handleSearch} // Agregar la función de búsqueda
+       onSortNew={handleSortNew}
+       onSortOlder={handleSortOlder}
       />
       <main>
         <section className="menu">
-          <Home movies={movies} />
+          <Home movies={filteredMovies} />
           <Pages setPage={setPage} page={page} />
         </section>
       </main>
