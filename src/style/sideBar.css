@@ -168,107 +168,93 @@ box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
   background-color: #FFFFF9;
 }
 
-/* .sidebar-genre {
-  height: 100vh;
-  width: 16rem;
-}
-.sidebar-title {
-    color: #F8F9F6;
-}
-
-.genre-contain {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  color: #F8F9F6;
-  margin-top: 60px;
-  margin-left: 10px;
-}
-.genre-contain button {
-  font-size: 14px;
-  width: 80px;
-  padding: 3px;
-  color: #F8F9F6;
-  background-color: rgb(24, 40, 66);
-  border: none;
-}
-.sidebar-year {
-  text-align: center;
-  margin-bottom: 20px;
-  padding-top: 50px;
-  font-size: 25px;
-  color: #F8F9F6;
-}
-.container-inputs {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.sidebar-input {
- width: 100px;
- padding: 5px;
-  text-align: center;
- margin: 10px;
-  border: none;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
+/* @import url(https://fonts.googleapis.com/css?family=Raleway);
+body{
+  font-family: 'Raleway', sans-serif;
+  background:#3E4651;
 } */
-/* span {
-  color: #F8F9F6;
-  margin-left: 5px;
+.list-choice{
+  margin:1em auto;
+  position: relative;
+  cursor: pointer;  
 }
-.sidebar-search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.sidebar-search button {
-  background-color: yellow;
-  border: none;
-  width: 150px;
-  height: 30px;
-  border-radius: 6px;
-  margin-top: 50px;
-  font-size: 16px;
+.list-choice input[type="radio"]{
+  position:absolute;
+  left:-9999px;
 }
 
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+.list-choice-title {
+width: 100%;
+height: 35px;
+display: flex;
+flex-direction: row;
+text-align: center;
+font-size: 13px;
+padding: 0.5em 0em;
+box-sizing: border-box;
+color: #F8F9F6;
+border-radius: 0.2em;
+background-color:#BA2B2B; 
+-webkit-box-shadow: 0px 13px 20px 4px rgba(5,5,5,0.98);
+-moz-box-shadow: 0px 13px 20px 4px rgba(5,5,5,0.98);
+box-shadow: 0px 13px 20px 4px rgba(5,5,5,0.98);
 }
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+.list-choice:hover .list-choice-title {
+border-radius:0.2em 0.2em 0 0;
 }
-
-.sidebar a:hover {
-  color: #f1f1f1;
+.list-choice-objects label:nth-last-of-type(1) span{
+  border-radius:0 0 0.2em 0.2em;
 }
+.list-choice input[type="radio"] + span {
+color: #F8F9F6;
+background-color:#BA2B2B; 
+padding: 0.55em 1em;
+display: block;
+text-align: center;
+box-sizing: border-box;
+cursor: pointer;
+width: 100%;
+font-size: 12px;
+}
+.list-choice-objects {
+position: absolute;
+top: 0;
+padding-top: 2.1em;
+box-sizing: border-box;
+width: 100%;
+overflow: hidden;
+max-height: 0;
+transition: all 250ms ease;
 
-.sidebar .closebtn {
+}
+.list-choice:hover .list-choice-objects  input[type="radio"] + span {
+position: relative;
+top: 0;
+transition: all 250ms ease-in-out;
+}
+.list-choice:hover input[type="radio"] + span:hover {
+background:#ba2b2bef; 
+font-size: 14px;
+transition: all 0.4s ease-in-out;
+}
+.list-choice:hover input[type="radio"]:checked + span:hover {
+  font-size: 14px;
+  transition: all 0.4s ease-in-out;
+  }
+  .list-choice input[type="radio"]:checked + span {
   position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
+  top: 0em;
+  border-radius: 0.2em;
+  font-size: 13px;
+  }
+  .list-choice:hover input[type="radio"]:checked + span {
+  border-radius: 0;
+  }
+  .list-choice:hover .list-choice-objects label:nth-last-of-type(1) input[type="radio"]:checked + span{
+    border-radius:0 0 0.2em 0.2em;
+  }
+  
+  .list-choice:hover .list-choice-objects {
+  max-height: 540px;
+  }
 
- */

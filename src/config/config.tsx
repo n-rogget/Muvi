@@ -1,26 +1,57 @@
 import { MovieData, GenreData } from "../data/data";
 
-  export const getMovies = (options: { page: number; genreId?: number }): Promise<MovieData[]> =>
+
+export const getMovies = (
+   page: number, 
+   filteredMovies: number,
+   initial: string,
+   final: string,
+   sortBy: string
+  ): Promise<MovieData[]> =>
   new Promise((resolve, reject) => {
-    const { page, genreId } = options;
-    const requestOptions = {
+    const options = {
       method: "GET",
       headers: {
         accept: "application/json",
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18'
       }
     };
-    let url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&sort_by=popularity.desc&with_genres=27%7C53`
-    if (genreId) {
-      url += `&with_genres=${genreId}`;
-    }
-
     fetch(
-    url,      requestOptions
-    )
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=27%7C53`,     
+      options
+      )
       .then((response) => response.json())
-      .then((response) => resolve(response?.results))
+      .then((response) => {
+        // Array de movies de la API
+        let movies: MovieData[] = response?.results;
+        if (sortBy === "old") {
+          movies = orderOld(movies);
+        } else {
+          movies = orderNew(movies);
+        }
+        resolve(movies);
+      })
       .catch((err) => reject(err));
+  });
+  const orderNew = (movies: MovieData[]): MovieData[] =>
+  movies.sort((a, b) => {
+    if (new Date(a.release_date) > new Date(b.release_date)) {
+      return -1;
+    } else if (new Date(a.release_date) < new Date(b.release_date)) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+const orderOld = (movies: MovieData[]) =>
+  movies.sort((a, b) => {
+    if (new Date(a.release_date) < new Date(b.release_date)) {
+      return -1;
+    } else if (new Date(a.release_date) > new Date(b.release_date)) {
+      return 1;
+    } else {
+      return 0;
+    }
   });
 
 
@@ -39,6 +70,3 @@ export const getGenres = (): Promise<GenreData[]> =>
       .then((response) => resolve(response?.genres))
       .catch((err) => reject(err));
   });
-
-
-

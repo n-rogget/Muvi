@@ -6,74 +6,35 @@ import Home from "./components/home";
 import Pages from "./components/pages";
 
 function App() {
-  const [allMovies, setAllMovies] = useState<MovieData[]>([]); // Estado para todas las películas
-  const [filteredMovies, setFilteredMovies] = useState<MovieData[]>([]); // Estado para películas filtradas
+  // Estado para todas las películas
+  const [allMovies, setAllMovies] = useState<MovieData[]>([]); 
+  // Estado para películas filtradas
+  const [filteredMovies, setFilteredMovies] = useState<number>(0); 
   const [page, setPage] = useState<number>(1);
-  const [, setSortAZ] = useState<boolean>(false);
-  const [, setSortNew] = useState<boolean>(false);  // Nuevo estado para ordenar por fecha nueva
-  const [, setSortOlder] = useState<boolean>(false);  // Nuevo estado para ordenar por fecha antigua
+  const [initial, setInitial] = useState<string>("1900-01-01");
+  const [final, setFinal] = useState<string>("2023-12-31");
+  const [sortBy, setSortBy] = useState<string>("new");
 
   useEffect(() => {
-    getMovies({ page: 1 })
+    getMovies(page, filteredMovies, initial, final, sortBy)
       .then((data: MovieData[]) => {
         setAllMovies(data);
-        setFilteredMovies(data); // Inicialmente, todas las películas están visibles
       })
       .catch((error) => console.error(error));
-  }, []);
-  const handleSortAZ = () => {
-    setSortAZ(true);
-    // Ordenar todas las películas
-   const sortedMovies = [...filteredMovies].sort((a, b) => a.title.localeCompare(b.title));
-   setFilteredMovies(sortedMovies);
-  };
-
-  const handleSortZA = () => {
-    setSortAZ(false);
-    // Ordenar todas las películas
-   const sortedMovies = [...filteredMovies].sort((a, b) => b.title.localeCompare(a.title));
-   setFilteredMovies(sortedMovies);
-  };
-
-  const handleSearch = (searchText: string) => {
-    // Filtra las películas en función del texto de búsqueda en todas las películas
-    const filteredMovies = allMovies.filter((movie) =>
-      movie.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setFilteredMovies(filteredMovies);
-  };
-  const handleSortNew = () => {
-    setSortNew(true);
-    setSortOlder(false);
-    const sortedMovies = [...filteredMovies].sort((a, b) =>
-      new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
-    );
-    setFilteredMovies(sortedMovies);
-  };
-
-  const handleSortOlder = () => {
-    setSortOlder(true);
-    setSortNew(false);
-    const sortedMovies = [...filteredMovies].sort((a, b) =>
-      new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
-    );
-    setFilteredMovies(sortedMovies);
-  };
-
+  }, [page, filteredMovies, initial, final, sortBy]);
+ 
   return (
     <section id="generalSection">
       <Sidebar
-       setMovies={setFilteredMovies} // Actualizar películas filtradas
-       moviesToSort={allMovies}
-       onSortAZ={handleSortAZ}
-       onSortZA={handleSortZA}
-       onSearch={handleSearch} // Agregar la función de búsqueda
-       onSortNew={handleSortNew}
-       onSortOlder={handleSortOlder}
+       setFilteredMovies={setFilteredMovies}
+       filteredMovies={filteredMovies}
+       setInitial={setInitial}
+       setFinal={setFinal}
+       setSortBy={setSortBy}
       />
       <main>
         <section className="menu">
-          <Home movies={filteredMovies} />
+          <Home movies={allMovies} />
           <Pages setPage={setPage} page={page} />
         </section>
       </main>
