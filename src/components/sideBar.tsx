@@ -36,7 +36,10 @@ export default function Sidebar({
         className="logoHome"
         onClick={() => window.location.reload()}
       />
-      <section className="search-container">
+     
+      <section id="main">
+        <section className="order">
+        <section className="search-container">
         <img
           className="search-icon"
           src="src/images/icono-lupa.png"
@@ -49,14 +52,14 @@ export default function Sidebar({
         /*      value={searchText}
              onChange={handleSearchChange} */
         />      </section>
-      <section id="main">
-        <section className="order">
-          <img src="src/images/Filtrar.png"
-            alt="filtrar"
-            className="imgSidebar" /> Filtrar por  </section>
+
+          </section>
         <section className="filter">
-          <h1> Categoría </h1>
-          <button
+       <h4> <img src="src/images/Filtrar.png"
+            alt="filtrar"
+            className="imgSidebar" /> Filtrar por </h4>
+          <h2> Categoría </h2>
+         {/*  <button
             id='btnTerror'
             className="btn" >
             Terror
@@ -65,22 +68,25 @@ export default function Sidebar({
             id='btnSuspenso'
             className="btn" >
             Suspenso
-          </button>
+          </button> */}
           <div
             className="contenedor-generos"
             id="filtroGeneros">
-            {genres?.map((genre: GenreData, i: number) => (
-              <button
-                className={genre.id === filteredMovies ? "btn active" : "btn"}
-                onClick={() => {
-                  setFilteredMovies(genre.id);
-                }}
-                key={i}
-              >
-                {genre.name}
-              </button>
-            ))}
-          </div>
+          {genres
+    .filter((genre) => genre.id === 27 || genre.id === 53)
+    .map((genre: GenreData, i: number) => (
+      <button
+        className={genre.id === filteredMovies ? "btn active" : "btn"}
+        onClick={() => {
+          setFilteredMovies(genre.id);
+        }}
+        key={i}
+      >
+        {genre.name}
+      </button>
+    ))}
+</div>
+<h3> Fecha de estreno </h3>
           <input
             className="sidebar-input"
             type="date"
