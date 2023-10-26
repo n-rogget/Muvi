@@ -2,12 +2,12 @@ import { MovieData, GenreData } from "../data/data";
 
 
 export const getMovies = (
-   page: number, 
-   filteredMovies: number,
-   initial: string,
-   final: string,
-   sortBy: string
-  ): Promise<MovieData[]> =>
+  page: number,
+  filteredMovies: number,
+  initial: string,
+  final: string,
+  sortBy: string
+): Promise<MovieData[]> =>
   new Promise((resolve, reject) => {
     const options = {
       method: "GET",
@@ -17,25 +17,30 @@ export const getMovies = (
       }
     };
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=27||53${
-        filteredMovies > 0 ? filteredMovies : ""
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=27||53${filteredMovies > 0 ? filteredMovies : ""
       }`,
       options
-      )
+    )
       .then((response) => response.json())
       .then((response) => {
         // Array de movies de la API
         let movies: MovieData[] = response?.results;
+        
         if (sortBy === "old") {
           movies = orderOld(movies);
-        } else {
+        }
+       
+        else if  (sortBy === 'new') {
           movies = orderNew(movies);
+        }
+        else {
+          movies = sortDefault(movies)
         }
         resolve(movies);
       })
       .catch((err) => reject(err));
   });
-  const orderNew = (movies: MovieData[]): MovieData[] =>
+const orderNew = (movies: MovieData[]): MovieData[] =>
   movies.sort((a, b) => {
     if (new Date(a.release_date) > new Date(b.release_date)) {
       return -1;
@@ -55,6 +60,10 @@ const orderOld = (movies: MovieData[]) =>
       return 0;
     }
   });
+const sortDefault = (movies: MovieData[]): MovieData[] => {
+  // Usar el método sort para ordenar las películas por popularidad descendente
+  return movies.sort((a, b) => b.popularity - a.popularity);
+};
 
 
 // Esta function obtiene los generos de la API y los retorna como un array de Generos

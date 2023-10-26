@@ -18,7 +18,7 @@ export default function Sidebar({
   setSortBy
 }: SidebarProps) {
 
-  
+
   //hook de estado (useState) para guardar  el array de generos
   const [genres, setGenres] = useState<GenreData[]>([]);
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Sidebar({
       .catch((error) => console.error(error));
   }, []);
 
-
+  // input por select
   return (
     <section className="side">
       <img
@@ -39,30 +39,30 @@ export default function Sidebar({
         className="logoHome"
         onClick={() => window.location.reload()}
       />
-     
+
       <section id="main">
         <section className="order">
-        <section className="search-container">
-        <img
-          className="search-icon"
-          src="src/images/icono-lupa.png"
-          alt="Buscar" />
-        <input
-          type="text"
-          className="input-style"
-          id="muviSearch"
-          placeholder="Busca tu película"
-        /*      value={searchText}
-             onChange={handleSearchChange} */
-        />      </section>
+          <section className="search-container">
+            <img
+              className="search-icon"
+              src="src/images/icono-lupa.png"
+              alt="Buscar" />
+            <input
+              type="text"
+              className="input-style"
+              id="muviSearch"
+              placeholder="Busca tu película"
+            /*      value={searchText}
+                 onChange={handleSearchChange} */
+            />      </section>
 
-          </section>
+        </section>
         <section className="filter">
-       <h4> <img src="src/images/Filtrar.png"
+          <h4> <img src="src/images/Filtrar.png"
             alt="filtrar"
             className="imgSidebar" /> Filtrar por </h4>
           <h2> Categoría </h2>
-         {/*  <button
+          {/*  <button
             id='btnTerror'
             className="btn" >
             Terror
@@ -75,21 +75,21 @@ export default function Sidebar({
           <section
             className="contenedor-generos"
             id="filtroGeneros">
-          {genres
-    .filter((genre) => genre.id === 27 || genre.id === 53)
-    .map((genre: GenreData, i: number) => (
-      <button
-        className={genre.id === filteredMovies ? "btn active" : "btn"}
-        onClick={() => {
-          setFilteredMovies(genre.id);
-        }}
-        key={i}
-      >
-        {genre.name}
-      </button>
-    ))}
-</section>
-<h3> Fecha de estreno </h3>
+            {genres
+              .filter((genre) => genre.id === 27 || genre.id === 53)
+              .map((genre: GenreData, i: number) => (
+                <button
+                  className={genre.id === filteredMovies ? "btn active" : "btn"}
+                  onClick={() => {
+                    setFilteredMovies(genre.id);
+                  }}
+                  key={i}
+                >
+                  {genre.name}
+                </button>
+              ))}
+          </section>
+          <h3> Fecha de estreno </h3>
           <input
             className="sidebar-input"
             type="date"
@@ -128,26 +128,25 @@ export default function Sidebar({
               <img src="src/images/Ordenar.png"
                 alt="Ordenar"
                 className="imgSidebar" />Ordenar por</section>
-            <section className="list-choice-objects"
+            <select className="list-choice-objects"
               id="ordenar"
               onChange={(event) => {
                 setSortBy(event.target.value);
               }}>
-              <label>
-                <input
-                  value={'new'}
-                  type="radio"
-                  name="orderYear" />
-                <span>Más nuevas</span>
-              </label>
-              <label>
-                <input
-                  value={'old'}
-                  type="radio"
-                  name="orderYear" />
-                <span>Más antiguas</span>
-              </label>
-            </section>
+              <option
+                value={'default'}
+                className="orderYear">
+                Defecto</option>
+              <option
+                value={'new'}
+                className="orderYear">
+                Más nuevas</option>
+              <option
+                value={'old'}
+                className="orderYear" >
+                Más antiguas</option>
+
+            </select>
           </section>
         </section>
       </section>

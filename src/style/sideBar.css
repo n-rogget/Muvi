@@ -202,7 +202,7 @@ body{
   font-family: 'Raleway', sans-serif;
   background:#3E4651;
 } */
-.list-choice {
+/* .list-choice {
   margin: 1.5em auto 1.5em auto;
   position: relative;
   cursor: pointer;
@@ -303,7 +303,7 @@ body{
 
 .list-choice:hover .list-choice-objects {
   max-height: 540px;
-}
+} */
 
 h4 {
   padding: 5px 0px;
@@ -312,4 +312,24 @@ h4 {
 
 .sidebar-input {
   margin: 10px;
+}
+select {
+  appearance: none;
+  padding: 5px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #BA2B2B;
+  color: #F8F9F6;
+  font-size: 13px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  box-shadow: 0px -3px 13px 0px rgba(0, 0, 0, 0.85);
+  -webkit-box-shadow: 0px -3px 13px 0px rgba(0, 0, 0, 0.85);
+  -moz-box-shadow: 0px -3px 13px 0px rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  background-color: #BA2B2B;
 }
