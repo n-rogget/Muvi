@@ -17,9 +17,9 @@ export const getMovies = (
       }
     };
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=${
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=27||53${
         filteredMovies > 0 ? filteredMovies : ""
-      }&sort_by=popularity.desc`,
+      }`,
       options
       )
       .then((response) => response.json())

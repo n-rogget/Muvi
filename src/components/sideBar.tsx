@@ -17,6 +17,8 @@ export default function Sidebar({
   setFinal,
   setSortBy
 }: SidebarProps) {
+
+  
   //hook de estado (useState) para guardar  el array de generos
   const [genres, setGenres] = useState<GenreData[]>([]);
   useEffect(() => {
@@ -27,6 +29,7 @@ export default function Sidebar({
       })
       .catch((error) => console.error(error));
   }, []);
+
 
   return (
     <section className="side">
@@ -48,7 +51,7 @@ export default function Sidebar({
           type="text"
           className="input-style"
           id="muviSearch"
-          placeholder="... Busca tu película"
+          placeholder="Busca tu película"
         /*      value={searchText}
              onChange={handleSearchChange} */
         />      </section>
@@ -69,7 +72,7 @@ export default function Sidebar({
             className="btn" >
             Suspenso
           </button> */}
-          <div
+          <section
             className="contenedor-generos"
             id="filtroGeneros">
           {genres
@@ -85,7 +88,7 @@ export default function Sidebar({
         {genre.name}
       </button>
     ))}
-</div>
+</section>
 <h3> Fecha de estreno </h3>
           <input
             className="sidebar-input"
