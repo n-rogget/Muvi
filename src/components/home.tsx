@@ -1,24 +1,29 @@
 import { MovieData } from "../data/data";
-
-//Esta interfaz especifíca las props que se pueden pasar a este
-//componente
-interface SeccionPrincipalProps {
-  //se define la prop movies que debe ser un array con las pelis
+import { Link } from 'react-router-dom'
+interface HomeProps {
   movies: MovieData[];
 }
 // como argumento se le pasa el objeto
-export default function Home({ movies }: SeccionPrincipalProps) {
+export default function Home({ movies }: HomeProps) {
+
   return (
     <section className="grid-muvi">
-      {movies.map((movie: MovieData, i: number) => (
-        <section className="main-muvi" id='main-muvi' key={i}>
-          <a href="#" className="link-muvi">
+      {movies.map((movie: MovieData) => (
+        <section
+          className="main-muvi"
+          id='main-muvi'
+          key={movie.id}
+          style={{ cursor: "pointer" }}
+        >
+          <Link to={`/movie/${movie.id}`} className='link-movie'>
+
             <img
               className="img-muvi"
               src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
               alt=""
             />
-          </a>
+          </Link>
+
           <p className="title-muvi">{movie.title}</p>
           <p className="muvi-date">
             {new Date(movie.release_date).getFullYear()}

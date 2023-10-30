@@ -1,6 +1,6 @@
 import { MovieData, GenreData } from "../data/data";
 
-
+export const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18'
 export const getMovies = (
   page: number,
   filteredMovies: number,
@@ -13,7 +13,7 @@ export const getMovies = (
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18'
+        Authorization: API_KEY
       }
     };
     fetch(
@@ -73,7 +73,7 @@ export const getGenres = (): Promise<GenreData[]> =>
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18'
+        Authorization: API_KEY
       }
     };
     fetch("https://api.themoviedb.org/3/genre/movie/list?language=es", options)
@@ -81,3 +81,4 @@ export const getGenres = (): Promise<GenreData[]> =>
       .then((response) => resolve(response?.genres))
       .catch((err) => reject(err));
   });
+ 

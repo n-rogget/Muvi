@@ -130,6 +130,7 @@ export default function Sidebar({
                 className="imgSidebar" />Ordenar por</section>
             <select className="list-choice-objects"
               id="ordenar"
+              data-testid={"orderBy"}
               onChange={(event) => {
                 setSortBy(event.target.value);
               }}>
@@ -145,6 +146,7 @@ export default function Sidebar({
                 value={'old'}
                 className="orderYear" >
                 Más antiguas</option>
+
 
             </select>
           </section>
