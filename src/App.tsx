@@ -4,10 +4,8 @@ import { getMovies } from "./config/config";
 import Sidebar from "./components/sideBar";
 import Home from "./components/home";
 import Pages from "./components/pages";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MovieView from "./components/movie";
 
-const App : React.FC = () => {
+function App () {
   // Estado para todas las películas
   const [allMovies, setAllMovies] = useState<MovieData[]>([]); 
   // Estado para películas filtradas
@@ -26,8 +24,7 @@ const App : React.FC = () => {
   }, [page, filteredMovies, initial, final, sortBy]);
  
   return (
-    <Router>
-    <section id="generalSection">
+      <section id="generalSection">
       <Sidebar
        setFilteredMovies={setFilteredMovies}
        filteredMovies={filteredMovies}
@@ -36,16 +33,12 @@ const App : React.FC = () => {
        setSortBy={setSortBy}
       />
       <main>
-      <Routes>
-      <Route path="/movie/:id" element={<MovieView />} />          
-       </Routes>
         <section className="menu">
           <Home movies={allMovies} />
           <Pages setPage={setPage} page={page} />
         </section>
       </main>
     </section>
-    </Router>
 
   );
 }

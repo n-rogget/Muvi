@@ -15,7 +15,7 @@ export default function Home({ movies }: HomeProps) {
           key={movie.id}
           style={{ cursor: "pointer" }}
         >
-          <Link to={`/movie/${movie.id}`} className='link-movie'>
+          <Link to={`/details/${movie.id}`} className="link-movie">
 
             <img
               className="img-muvi"

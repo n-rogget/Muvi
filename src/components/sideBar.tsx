@@ -94,14 +94,14 @@ export default function Sidebar({
             className="sidebar-input"
             type="date"
             id="añosMin"
-            placeholder="1900-01-01"
+            min="1900"
+            max="2023"
+            placeholder="1900"
+            maxLength={4}
             data-testid={"aniosMin"}
             onChange={(event) => {
-              const date = new Date(event.target.value);
               console.log("initialYear input:", event.target.value);
-              const formateDate = `${date.getFullYear()}-${(date.getMonth() + 1)
-                .toString()
-                .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+              const formateDate = `${event.target.value}-01-01`
               setInitial(formateDate);
             }}
           />
@@ -110,16 +110,14 @@ export default function Sidebar({
             className="sidebar-input"
             type="date"
             id="añosMin"
-            placeholder="2023-12-31"
+            min="1900"
+            max="2023"
+            placeholder="2023"
+            maxLength={4}
             data-testid={"aniosMax"}
             onChange={(event) => {
-              const date = new Date(event.target.value);
-              console.log("finalYear input:", date);
-              const formateDate = `${date.getFullYear()}-${(date.getMonth() + 1)
-                .toString()
-                .padStart(2, "0")}-${date.getDate()
-                  .toString()
-                  .padStart(2, "0")}`;
+              console.log("finalYear input:", event.target.value);
+              const formateDate = `${event.target.value}`
               setFinal(formateDate);
             }}
           />

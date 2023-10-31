@@ -197,114 +197,6 @@ h2:focus {
   background-color: #FFFFF9;
 }
 
-/* @import url(https://fonts.googleapis.com/css?family=Raleway);
-body{
-  font-family: 'Raleway', sans-serif;
-  background:#3E4651;
-} */
-/* .list-choice {
-  margin: 1.5em auto 1.5em auto;
-  position: relative;
-  cursor: pointer;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.list-choice input[type="radio"] {
-  position: absolute;
-  left: -9999px;
-}
-
-.list-choice-title {
-  width: 100%;
-  height: 35px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 13px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  padding: 0.5em 0em;
-  box-sizing: border-box;
-  color: #F8F9F6;
-  border-radius: 0.2em;
-  background-color: #BA2B2B;
-  box-shadow: 0px -3px 13px 0px rgba(0, 0, 0, 0.85);
-  -webkit-box-shadow: 0px -3px 13px 0px rgba(0, 0, 0, 0.85);
-  -moz-box-shadow: 0px -3px 13px 0px rgba(0, 0, 0, 0.85);
-}
-
-.list-choice:hover .list-choice-title {
-  border-radius: 0.2em 0.2em 0 0;
-}
-
-.list-choice-objects label:nth-last-of-type(1) span {
-  border-radius: 0 0 0.2em 0.2em;
-}
-
-.list-choice input[type="radio"]+span {
-  color: #F8F9F6;
-  background-color: #BA2B2B;
-  padding: 0.55em 1em;
-  display: block;
-  text-align: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  width: 100%;
-  font-size: 12px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.list-choice-objects {
-  position: absolute;
-  top: 0;
-  padding-top: 2.1em;
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  max-height: 0;
-  transition: all 250ms ease;
-
-}
-
-.list-choice:hover .list-choice-objects input[type="radio"]+span {
-  position: relative;
-  top: 0;
-  transition: all 250ms ease-in-out;
-}
-
-.list-choice:hover input[type="radio"]+span:hover {
-  background: #ba2b2bef;
-  font-size: 14px;
-  transition: all 0.4s ease-in-out;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.list-choice:hover input[type="radio"]:checked+span:hover {
-  font-size: 14px;
-  transition: all 0.4s ease-in-out;
-}
-
-.list-choice input[type="radio"]:checked+span {
-  position: absolute;
-  top: 0em;
-  border-radius: 0.2em;
-  font-size: 13px;
-}
-
-.list-choice:hover input[type="radio"]:checked+span {
-  border-radius: 0;
-}
-
-.list-choice:hover .list-choice-objects label:nth-last-of-type(1) input[type="radio"]:checked+span {
-  border-radius: 0 0 0.2em 0.2em;
-}
-
-.list-choice:hover .list-choice-objects {
-  max-height: 540px;
-} */
-
 h4 {
   padding: 5px 0px;
   margin: 0;
@@ -319,7 +211,7 @@ select {
   margin-top: 15px;
   border-radius: 5px;
   border: none;
-  background-color: #BA2B2B;
+  background-color: #ba2b2bcb;
   color: #F8F9F6;
   font-size: 13px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

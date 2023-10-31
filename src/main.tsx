@@ -5,9 +5,24 @@ import App from './app'
 import './style/sideBar.css'
 import './style/home.css'
 import './style/pages.css'
+import MovieView from './components/movie'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+  {
+    path: "/details/:movieId",
+    element: <MovieView/>,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    < App />
+     <RouterProvider router={router} />
   </React.StrictMode>,
 )
