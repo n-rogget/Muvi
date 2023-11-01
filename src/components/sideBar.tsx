@@ -34,7 +34,7 @@ export default function Sidebar({
   return (
     <section className="side">
       <img
-        src="src/images/Muvi (10).png"
+        src="src/images/LogoMuvi.png"
         alt="Logo Muvi"
         className="logoHome"
         onClick={() => window.location.reload()}
@@ -52,8 +52,7 @@ export default function Sidebar({
               className="input-style"
               id="muviSearch"
               placeholder="Busca tu película"
-            /*      value={searchText}
-                 onChange={handleSearchChange} */
+          
             />      </section>
 
         </section>
@@ -62,16 +61,6 @@ export default function Sidebar({
             alt="filtrar"
             className="imgSidebar" /> Filtrar por </h4>
           <h2> Categoría </h2>
-          {/*  <button
-            id='btnTerror'
-            className="btn" >
-            Terror
-          </button>
-          <button
-            id='btnSuspenso'
-            className="btn" >
-            Suspenso
-          </button> */}
           <section
             className="contenedor-generos"
             id="filtroGeneros">

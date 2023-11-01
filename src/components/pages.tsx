@@ -1,15 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 
-// La interfaz PaginationProps define las propiedades que se pueden pasar al componente Pages.
 interface PaginationProps {
-  // setPage es una función que se utiliza para actualizar el estado de page. 
-  //page es una variable de tipo número que representa la página actual.
+
   setPage: Dispatch<SetStateAction<number>>;
   page: number;
 }
-//La función Pages es un componente de React que recibe dos propiedades: setPage y page.
-// Esta función se exporta como el valor predeterminado del módulo.
-
 export default function Pages({ setPage, page }: PaginationProps) {
   return (
     <section className="pages">

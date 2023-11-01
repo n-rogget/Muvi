@@ -7,8 +7,7 @@ import './style/home.css'
 import './style/pages.css'
 import MovieView from './components/movie'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
-
+import './style/movie.css'
 
 const router = createBrowserRouter([
   {
