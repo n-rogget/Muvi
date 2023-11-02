@@ -86,7 +86,7 @@ describe("Home", () => {
       original_title: 'movie',
       overview: ' movie description',
       popularity: 35,
-      poster_path: '',
+      poster_path: 'src/images/Notfound.png',
       release_date: '2022-01-01', 
       title: 'the movie',
       video: false,
