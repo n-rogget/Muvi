@@ -3,6 +3,7 @@ import { GenreData, MovieInfo, Start, /* Start */ } from "../data/data";
 import { Link, useParams } from "react-router-dom";
 import { getMovieInfo } from "../config/config";
 import LogoMuvi from '../images/LogoMuvi.png';
+import Notfound from '../images/Notfound.png'
 
 
 
@@ -56,6 +57,9 @@ export default function MovieDetails() {
           <img
             className="movie-img"
             src={`https://image.tmdb.org/t/p/w154/${movie?.poster_path}`}
+            onError={(e) => {
+              e.currentTarget.src = Notfound;
+            }}
             alt=""
           />
 

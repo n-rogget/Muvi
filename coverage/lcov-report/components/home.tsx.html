@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -94,22 +94,38 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,26 +142,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { MovieData } from "../data/data";
-&nbsp;
-//Esta interfaz especifíca las props que se pueden pasar a este
-//componente
-interface SeccionPrincipalProps {
-  //se define la prop movies que debe ser un array con las pelis
+import { Link } from 'react-router-dom'
+interface HomeProps {
   movies: MovieData[];
 }
 // como argumento se le pasa el objeto
-export default function Home({ movies }: SeccionPrincipalProps) {
+export default function Home({ movies }: HomeProps) {
+&nbsp;
   return (
     &lt;section className="grid-muvi"&gt;
-      {movies.map((movie: MovieData, i: number) =&gt; (
-        &lt;section className="main-muvi" id='main-muvi' key={i}&gt;
-          &lt;a href="#" className="link-muvi"&gt;
+      {movies.map((movie: MovieData) =&gt; (
+        &lt;section
+          className="main-muvi"
+          id='main-muvi'
+          key={movie.id}
+          style={{ cursor: "pointer" }}
+        &gt;
+          &lt;Link to={`/details/${movie.id}`} className="link-movie"&gt;
+&nbsp;
             &lt;img
               className="img-muvi"
-              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`} 
+              onError={(e) =&gt; {
+                e.currentTarget.src = 'src/images/Notfound.png';
+              }}
               alt=""
             /&gt;
-          &lt;/a&gt;
+          &lt;/Link&gt;
+&nbsp;
           &lt;p className="title-muvi"&gt;{movie.title}&lt;/p&gt;
           &lt;p className="muvi-date"&gt;
             {new Date(movie.release_date).getFullYear()}
@@ -163,7 +187,7 @@ export default function Home({ movies }: SeccionPrincipalProps) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-30T17:13:11.716Z
+                at 2023-11-02T02:27:48.394Z
             </div>
         <script src="../prettify.js"></script>
         <script>

@@ -4,10 +4,13 @@ import { getGenres } from "../config/config";
 import { GenreData } from "../data/data";
 
 interface SidebarProps {
+  // fx para actualizar estado de un número (cambia valor de filtered movies)
   setFilteredMovies: Dispatch<SetStateAction<number>>;
   filteredMovies: number;
+  //Actualizar valor inicial de fechas
   setInitial: Dispatch<SetStateAction<string>>;
   setFinal: Dispatch<SetStateAction<string>>;
+  //Actualiza el estado de sortby
   setSortBy: Dispatch<SetStateAction<string>>;
 }
 export default function Sidebar({
@@ -20,9 +23,12 @@ export default function Sidebar({
 
 
   //hook de estado (useState) para guardar  el array de generos
+  // Variable de estado genres, se inicia como array vacío de GenreDaata
+  // setGenres, actualiza valor de genres
   const [genres, setGenres] = useState<GenreData[]>([]);
   useEffect(() => {
     getGenres()
+    // data es el resultado de la promesa y se espera que sea un array de obj de GenreData
       .then((data: GenreData[]) => {
         console.log("GENEROS: ", data);
         setGenres(data);
@@ -30,7 +36,6 @@ export default function Sidebar({
       .catch((error) => console.error(error));
   }, []);
 
-  // input por select
   return (
     <section className="side">
       <img
@@ -52,7 +57,7 @@ export default function Sidebar({
               className="input-style"
               id="muviSearch"
               placeholder="Busca tu película"
-          
+
             />      </section>
 
         </section>
@@ -79,9 +84,11 @@ export default function Sidebar({
               ))}
           </section>
           <h3> Fecha de estreno </h3>
+          <form>
+          <label className="dateP"> Desde: </label>
           <input
             className="sidebar-input"
-            type="date"
+            type="number"
             id="añosMin"
             min="1900"
             max="2023"
@@ -90,14 +97,16 @@ export default function Sidebar({
             data-testid={"aniosMin"}
             onChange={(event) => {
               console.log("initialYear input:", event.target.value);
-              const formateDate = `${event.target.value}-01-01`
+              const formateDate = `${event.target.value}`
               setInitial(formateDate);
             }}
           />
-          <span>-</span>
+          <br></br>
+          <label className="dateP"> Hasta:
+          </label>
           <input
             className="sidebar-input"
-            type="date"
+            type="number"
             id="añosMin"
             min="1900"
             max="2023"
@@ -110,6 +119,8 @@ export default function Sidebar({
               setFinal(formateDate);
             }}
           />
+          <input type="reset" value="Limpiar"/>
+          </form>
           <section className="list-choice">
             <section className="list-choice-title" >
               <img src="src/images/Ordenar.png"

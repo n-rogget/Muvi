@@ -1,8 +1,26 @@
-import { render, waitFor } from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import Home from "../components/home";
 import { MovieData } from "../data/data";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 
-describe("SeccionPrincipal", () => {
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: jest.fn()
+}));
+
+describe("Home", () => {
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => { });
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => { });
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
+    consoleErrorSpy.mockRestore();
+  });
   it("debe renderizar una lista de películas de terror y suspenso", async () => {
     const movies: MovieData[] = [
       {
@@ -46,11 +64,53 @@ describe("SeccionPrincipal", () => {
       },
     ]
 
-    const { getAllByText } = render(<Home movies={movies} />);
+    const { getAllByText } = render(
+      <BrowserRouter>
+        <Home movies={movies} />
+      </BrowserRouter>);
 
     // Verifica que se rendericen los títulos de las películas.
     await waitFor(() => {
       expect(getAllByText(/Los mercenarios 4/).length).toBe(1);
     });
   });
+  test('Debería poner imagen predeterminada si hay error con la original', () => {
+
+  const movie = 
+    {
+      adult: true,
+      backdrop_path: 'string',
+      genre_ids: [27],
+      id: 904613,
+      original_language: 'es',
+      original_title: 'movie',
+      overview: ' movie description',
+      popularity: 35,
+      poster_path: '',
+      release_date: '2022-01-01', 
+      title: 'the movie',
+      video: false,
+      vote_average: 54,
+      vote_count: 65,
+    }
+  ;
+  
+    render  (
+    <MemoryRouter>
+    <Home movies={[movie]} />
+  </MemoryRouter>)
+  
+    // Busca el elemento img
+    const imgElement = screen.getByAltText('') as HTMLImageElement;
+  
+    // Simula un evento de error en la imagen
+    const errorEvent = new Event('error');
+    Object.defineProperty(imgElement, 'src', { writable: true });
+    imgElement.src = 'initial-source.jpg';
+    imgElement.dispatchEvent(errorEvent);
+  
+    expect(imgElement.getAttribute('src')).toBe('src/images/Notfound.png');
+  });
 });
+
+

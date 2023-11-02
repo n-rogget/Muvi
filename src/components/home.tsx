@@ -19,7 +19,10 @@ export default function Home({ movies }: HomeProps) {
 
             <img
               className="img-muvi"
-              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`} 
+              onError={(e) => {
+                e.currentTarget.src = 'src/images/Notfound.png';
+              }}
               alt=""
             />
           </Link>
