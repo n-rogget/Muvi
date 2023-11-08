@@ -18,3 +18,14 @@ Escritura de código con react y typeScript
 
 Funcionalidad de botones para filtrado y orden
 
+## 1.0.0 - 2023-11-8
+
+### Sprint learnings
+
+Uso de link
+
+### Added
+
+Test de movie
+css de paginación
+
