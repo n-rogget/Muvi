@@ -8,6 +8,13 @@
 
 Vista home con peliculas, buscador, filtros y paginación
 
+## 1.0.2 - 2023-10-31
+### Sprint learnings
+Uso de Link Uso del Hook useParams()
+
+### Added
+Link to Vista para la información de la película
+
 ## 1.0.0 - 2023-10-25
 
 ### Sprint learnings
