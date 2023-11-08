@@ -25,7 +25,7 @@ export default function MovieDetails() {
     return starts;
   };
 
-  const renderStarts = (starts: number): Start[] => {
+  const renderVotes = (starts: number): Start[] => {
     const arrayStarts = [];
 
     for (let index = 0; index <= 5; index++) {
@@ -46,10 +46,7 @@ export default function MovieDetails() {
           className="logoHome"
           id="imgLogo"
         />
-        <section className="section-title">
-          <p className="title-info">{movie?.title}</p>
-          <p className="yearP">{new Date(movie?.release_date || "").getFullYear()}</p>
-        </section>
+       
       </section>
       
       <section className="img-info">
@@ -66,12 +63,16 @@ export default function MovieDetails() {
         </section>
 
         <section className="info">
+        <section className="section-title">
+          <p className="title-info">{movie?.title}</p>
+          <p className="yearP">{new Date(movie?.release_date || "").getFullYear()}</p>
+        </section>
           <p className="infoMovie">{movie?.overview}</p>
           <section className="votesSection">
             <p className="percent">{movie?.vote_average.toFixed(2)}%</p>
             <p className="votes">
               {movie?.vote_count}{" "}
-              {renderStarts(getTotalVotes(movie?.vote_average || 0)).map(
+              {renderVotes(getTotalVotes(movie?.vote_average || 0)).map(
                 (start: Start) =>
                   start.status ? (
                     <i className="fa-solid fa-star" />

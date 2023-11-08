@@ -1,7 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { getGenres } from "../config/config";
-import { GenreData } from "../data/data";
+import { 
+  Dispatch, 
+  SetStateAction, 
+  useEffect, 
+  useState 
+} from "react";
+import { 
+  getGenres
+ } from "../config/config";
+import { 
+  GenreData
+ } from "../data/data";
 
 interface SidebarProps {
   // fx para actualizar estado de un número (cambia valor de filtered movies)
@@ -46,7 +55,7 @@ export default function Sidebar({
       />
 
       <section id="main">
-        <section className="order">
+        {/* <section className="order">
           <section className="search-container">
             <img
               className="search-icon"
@@ -60,7 +69,7 @@ export default function Sidebar({
 
             />      </section>
 
-        </section>
+        </section> */}
         <section className="filter">
           <h4> <img src="src/images/Filtrar.png"
             alt="filtrar"
