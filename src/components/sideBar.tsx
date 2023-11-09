@@ -128,7 +128,6 @@ export default function Sidebar({
               setFinal(formateDate);
             }}
           />
-          <input type="reset" value="Limpiar"/>
           </form>
           <section className="list-choice">
             <section className="list-choice-title" >
