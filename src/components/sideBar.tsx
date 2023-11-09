@@ -11,6 +11,10 @@ import {
 import { 
   GenreData
  } from "../data/data";
+ import LogoMuvi from '../images/LogoMuvi.png';
+ import Filtrar from '../images/Filtrar.png'
+ import Ordenar from '../images/Ordenar.png'
+
 
 interface SidebarProps {
   // fx para actualizar estado de un número (cambia valor de filtered movies)
@@ -48,30 +52,16 @@ export default function Sidebar({
   return (
     <section className="side">
       <img
-        src="src/images/LogoMuvi.png"
+        src={LogoMuvi}
         alt="Logo Muvi"
         className="logoHome"
         onClick={() => window.location.reload()}
       />
 
       <section id="main">
-        {/* <section className="order">
-          <section className="search-container">
-            <img
-              className="search-icon"
-              src="src/images/icono-lupa.png"
-              alt="Buscar" />
-            <input
-              type="text"
-              className="input-style"
-              id="muviSearch"
-              placeholder="Busca tu película"
-
-            />      </section>
-
-        </section> */}
+     
         <section className="filter">
-          <h4> <img src="src/images/Filtrar.png"
+          <h4> <img src={Filtrar}
             alt="filtrar"
             className="imgSidebar" /> Filtrar por </h4>
           <h2> Categoría </h2>
@@ -131,7 +121,7 @@ export default function Sidebar({
           </form>
           <section className="list-choice">
             <section className="list-choice-title" >
-              <img src="src/images/Ordenar.png"
+              <img src={Ordenar}
                 alt="Ordenar"
                 className="imgSidebar" />Ordenar por</section>
             <select className="list-choice-objects"

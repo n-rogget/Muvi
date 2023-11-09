@@ -1,5 +1,7 @@
 import { MovieData } from "../data/data";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Notfound from '../images/Notfound.png';
+
 interface HomeProps {
   movies: MovieData[];
 }
@@ -21,7 +23,7 @@ export default function Home({ movies }: HomeProps) {
               className="img-muvi"
               src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`} 
               onError={(e) => {
-                e.currentTarget.src = 'src/images/Notfound.png';
+                e.currentTarget.src = Notfound;
               }}
               alt=""
             />
