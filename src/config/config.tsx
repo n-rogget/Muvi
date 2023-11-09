@@ -1,6 +1,8 @@
-import { MovieData, GenreData, MovieInfo } from "../data/data";
+/* eslint-disable max-len */
+import { MovieData, GenreData, MovieInfo } from '../data/data';
 
-export const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18'
+export const API_KEY =
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18';
 export const getMovies = (
   page: number,
   filteredMovies: number,
@@ -10,15 +12,15 @@ export const getMovies = (
 ): Promise<MovieData[]> =>
   new Promise((resolve, reject) => {
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        accept: "application/json",
+        accept: 'application/json',
         Authorization: API_KEY
       }
     };
-    console.log(filteredMovies)
+    console.log(filteredMovies);
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=${filteredMovies > 0 ? filteredMovies : "27||53"
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=${filteredMovies > 0 ? filteredMovies : '27||53'
       }`,
       options
     )
@@ -26,16 +28,16 @@ export const getMovies = (
       .then((response) => {
         // Array de movies de la API
         let movies: MovieData[] = response?.results;
-        
-        if (sortBy === "old") {
+
+        if (sortBy === 'old') {
           movies = orderOld(movies);
         }
-       
-        else if  (sortBy === 'new') {
+
+        else if (sortBy === 'new') {
           movies = orderNew(movies);
         }
         else {
-          movies = sortDefault(movies)
+          movies = sortDefault(movies);
         }
         resolve(movies);
       })
@@ -71,24 +73,24 @@ const sortDefault = (movies: MovieData[]): MovieData[] => {
 export const getGenres = (): Promise<GenreData[]> =>
   new Promise((resolve, reject) => {
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        accept: "application/json",
+        accept: 'application/json',
         Authorization: API_KEY
       }
     };
-    fetch("https://api.themoviedb.org/3/genre/movie/list?language=es", options)
+    fetch('https://api.themoviedb.org/3/genre/movie/list?language=es', options)
       .then((response) => response.json())
       .then((response) => resolve(response?.genres))
       .catch((err) => reject(err));
   });
- 
-  export const getMovieInfo = (movieId: number): Promise<MovieInfo> =>
+
+export const getMovieInfo = (movieId: number): Promise<MovieInfo> =>
   new Promise((resolve, reject) => {
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        accept: "application/json",
+        accept: 'application/json',
         Authorization: API_KEY
       }
     };

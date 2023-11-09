@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { 
-  Dispatch, 
-  SetStateAction, 
-  useEffect, 
-  useState 
-} from "react";
-import { 
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState
+} from 'react';
+import {
   getGenres
- } from "../config/config";
-import { 
+} from '../config/config';
+import {
   GenreData
- } from "../data/data";
- import LogoMuvi from '../images/LogoMuvi.png';
- import Filtrar from '../images/Filtrar.png'
- import Ordenar from '../images/Ordenar.png'
+} from '../data/data';
+import LogoMuvi from '../images/LogoMuvi.png';
+import Filtrar from '../images/Filtrar.png';
+import Ordenar from '../images/Ordenar.png';
 
 
 interface SidebarProps {
@@ -26,7 +26,7 @@ interface SidebarProps {
   //Actualiza el estado de sortby
   setSortBy: Dispatch<SetStateAction<string>>;
 }
-export default function Sidebar({
+export default function Sidebar ({
   setFilteredMovies,
   /* filteredMovies */
   setInitial,
@@ -41,38 +41,36 @@ export default function Sidebar({
   const [genres, setGenres] = useState<GenreData[]>([]);
   useEffect(() => {
     getGenres()
-    // data es el resultado de la promesa y se espera que sea un array de obj de GenreData
+      // data es el resultado de la promesa y se espera que sea un array de obj de GenreData
       .then((data: GenreData[]) => {
-        console.log("GENEROS: ", data);
         setGenres(data);
       })
       .catch((error) => console.error(error));
   }, []);
 
   return (
-    <section className="side">
+    <section className='side'>
       <img
         src={LogoMuvi}
-        alt="Logo Muvi"
-        className="logoHome"
+        className='logoHome'
         onClick={() => window.location.reload()}
       />
 
-      <section id="main">
-     
-        <section className="filter">
+      <section id='main'>
+
+        <section className='filter'>
           <h4> <img src={Filtrar}
-            alt="filtrar"
-            className="imgSidebar" /> Filtrar por </h4>
+            alt='filtrar'
+            className='imgSidebar' /> Filtrar por </h4>
           <h2> Categoría </h2>
           <section
-            className="contenedor-generos"
-            id="filtroGeneros">
+            className='contenedor-generos'
+            id='filtroGeneros'>
             {genres
               .filter((genre) => genre.id === 27 || genre.id === 53)
               .map((genre: GenreData, i: number) => (
                 <button
-                  className="btn"
+                  className='btn'
                   onClick={() => {
                     setFilteredMovies(genre.id);
                   }}
@@ -84,63 +82,62 @@ export default function Sidebar({
           </section>
           <h3> Fecha de estreno </h3>
           <form>
-          <label className="dateP"> Desde: </label>
-          <input
-            className="sidebar-input"
-            type="number"
-            id="añosMin"
-            min="1900"
-            max="2023"
-            placeholder="1900"
-            maxLength={4}
-            data-testid={"aniosMin"}
-            onChange={(event) => {
-              console.log("initialYear input:", event.target.value);
-              const formateDate = `${event.target.value}`
-              setInitial(formateDate);
-            }}
-          />
-          <br></br>
-          <label className="dateP"> Hasta:
-          </label>
-          <input
-            className="sidebar-input"
-            type="number"
-            id="añosMin"
-            min="1900"
-            max="2023"
-            placeholder="2023"
-            maxLength={4}
-            data-testid={"aniosMax"}
-            onChange={(event) => {
-              console.log("finalYear input:", event.target.value);
-              const formateDate = `${event.target.value}`
-              setFinal(formateDate);
-            }}
-          />
+            <label className='dateP'> Desde: </label>
+            <input
+              className='sidebar-input'
+              type='number'
+              id='añosMin'
+              min='1900'
+              max='2023'
+              placeholder='1900'
+              maxLength={4}
+              data-testid={'aniosMin'}
+              onChange={(event) => {
+                const formateDate = `${event.target.value}`;
+                setInitial(formateDate);
+              }}
+            />
+            <br></br>
+            <label className='dateP'> Hasta:
+            </label>
+            <input
+              className='sidebar-input'
+              type='number'
+              id='añosMin'
+              min='1900'
+              max='2023'
+              placeholder='2023'
+              maxLength={4}
+              data-testid={'aniosMax'}
+              onChange={(event) => {
+                console.log('finalYear input:', event.target.value);
+                const formateDate = `${event.target.value}`;
+                setFinal(formateDate);
+              }}
+            />
           </form>
-          <section className="list-choice">
-            <section className="list-choice-title" >
+          <section className='list-choice'>
+            <section className='list-choice-title' >
               <img src={Ordenar}
-                alt="Ordenar"
-                className="imgSidebar" />Ordenar por</section>
-            <select className="list-choice-objects"
-              id="ordenar"
-              data-testid={"orderBy"}
+                alt='Ordenar'
+                className='imgSidebar' />Ordenar por</section>
+            <select className='list-choice-objects'
+              id='ordena'
+              data-testid={'orderBy'}
               onChange={(event) => {
                 setSortBy(event.target.value);
               }}>
               <option
                 value={'default'}
-                className="orderYear">
+                className='orderYear'>
                 Defecto</option>
               <option
                 value={'new'}
-                className="orderYear">
+                className='orderYear'>
                 Más nuevas</option>
               <option
                 value={'old'}
-                className="orderYear" >
+                className='orderYear' >
                 Más antiguas</option>
 
 
@@ -148,7 +145,7 @@ export default function Sidebar({
           </section>
         </section>
       </section>
-    </section >)
+    </section >);
 }
 
 

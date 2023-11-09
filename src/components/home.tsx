@@ -1,4 +1,4 @@
-import { MovieData } from "../data/data";
+import { MovieData } from '../data/data';
 import { Link } from 'react-router-dom';
 import Notfound from '../images/Notfound.png';
 
@@ -9,28 +9,28 @@ interface HomeProps {
 export default function Home({ movies }: HomeProps) {
 
   return (
-    <section className="grid-muvi">
+    <section className='grid-muvi'>
       {movies.map((movie: MovieData) => (
         <section
-          className="main-muvi"
+          className='main-muvi'
           id='main-muvi'
           key={movie.id}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
         >
-          <Link to={`/details/${movie.id}`} className="link-movie">
+          <Link to={`/details/${movie.id}`} className='link-movie'>
 
             <img
-              className="img-muvi"
+              className='img-muvi'
               src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`} 
               onError={(e) => {
                 e.currentTarget.src = Notfound;
               }}
-              alt=""
+              alt=''
             />
           </Link>
 
-          <p className="title-muvi">{movie.title}</p>
-          <p className="muvi-date">
+          <p className='title-muvi'>{movie.title}</p>
+          <p className='muvi-date'>
             {new Date(movie.release_date).getFullYear()}
           </p>
         </section>
