@@ -204,6 +204,8 @@ h4 {
 
 .sidebar-input {
   margin: 10px;
+  border-radius: 5px;
+    border: 1px solid #39c
 }
 select {
   appearance: none;
@@ -229,3 +231,6 @@ select:focus {
 #ordenar {
   font-size: 14px;
 }
+/* .dateP {
+
+} */

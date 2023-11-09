@@ -24,7 +24,7 @@ interface SidebarProps {
 }
 export default function Sidebar({
   setFilteredMovies,
-  filteredMovies,
+  /* filteredMovies */
   setInitial,
   setFinal,
   setSortBy
@@ -82,7 +82,7 @@ export default function Sidebar({
               .filter((genre) => genre.id === 27 || genre.id === 53)
               .map((genre: GenreData, i: number) => (
                 <button
-                  className={genre.id === filteredMovies ? "btn active" : "btn"}
+                  className="btn"
                   onClick={() => {
                     setFilteredMovies(genre.id);
                   }}

@@ -13,7 +13,7 @@ function App () {
   const [page, setPage] = useState<number>(1);
   const [initial, setInitial] = useState<string>("1900-01-01");
   const [final, setFinal] = useState<string>("2023-12-31");
-  const [sortBy, setSortBy] = useState<string>("new");
+  const [sortBy, setSortBy] = useState<string>("default");
 
   useEffect(() => {
     getMovies(page, filteredMovies, initial, final, sortBy)
