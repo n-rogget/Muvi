@@ -4,28 +4,28 @@
   gap: 20px;
   padding: 20px;
   text-align: center
-
 }
+
 .pages button {
   width: 100px;
   height: 40px;
   height: 35npmpx;
   background-color: rgba(214, 29, 35, 0);
-/*   border: none;
- */  color: #F8F9F6;
+  color: #F8F9F6;
   font-size: 16px;
-  border:1px solid #000000;
+  border: 1px solid #000000;
   text-align: center;
   color: #07040c;
-  background-color: #F8F9F6 ;
-border-radius: 5px;
-height: 30px;
-width: 90px;
-margin: 5px;
--webkit-box-shadow: 0px 0px 5px 3px #0b0b0b;
--moz-box-shadow: 0px 0px 5px 3px #0b0b0b;
-box-shadow: 0px 0px 5px 1px #0b0b0b;
+  background-color: #F8F9F6;
+  border-radius: 5px;
+  height: 30px;
+  width: 90px;
+  margin: 5px;
+  -webkit-box-shadow: 0px 0px 5px 3px #0b0b0b;
+  -moz-box-shadow: 0px 0px 5px 3px #0b0b0b;
+  box-shadow: 0px 0px 5px 1px #0b0b0b;
 }
+
 .pages button:hover {
   color: #b01616;
   transition: all 0.5s ease-in-out;

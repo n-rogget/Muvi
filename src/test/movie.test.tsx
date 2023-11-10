@@ -110,13 +110,12 @@ describe('Movie', () => {
     consoleErrorSpy.mockRestore();
   });
 
-  it('Debe mostrarme los detalles de la pelicula ', async () => {
+  test('Debe mostrarme los detalles de la pelicula ', async () => {
     const { getAllByText } = render(
       <BrowserRouter>
         <Movie />
       </BrowserRouter>
     );
-    // Verifica que me muestre los detalles de las películas.
     await waitFor(() => {
       expect(getAllByText(/La monja II/).length).toBe(1);
     });

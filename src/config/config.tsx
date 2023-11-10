@@ -3,6 +3,7 @@ import { MovieData, GenreData, MovieInfo } from '../data/data';
 
 export const API_KEY =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTMyMDJmOWVhY2U4MTQ1YjFiMDZkNzVhYjgwMTA3NSIsInN1YiI6IjY1MjU5MDhiMGNiMzM1MTZmNjNiZDdkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0JUyouktibpXNuSwTQrqu8H-iXYCTXw7eOhE4mBRe18';
+
 export const getMovies = (
   page: number,
   filteredMovies: number,
@@ -25,13 +26,10 @@ export const getMovies = (
     )
       .then((response) => response.json())
       .then((response) => {
-        // Array de movies de la API
         let movies: MovieData[] = response?.results;
-
         if (sortBy === 'old') {
           movies = orderOld(movies);
         }
-
         else if (sortBy === 'new') {
           movies = orderNew(movies);
         }
@@ -42,6 +40,7 @@ export const getMovies = (
       })
       .catch((err) => reject(err));
   });
+
 const orderNew = (movies: MovieData[]): MovieData[] =>
   movies.sort((a, b) => {
     if (new Date(a.release_date) > new Date(b.release_date)) {
@@ -52,6 +51,7 @@ const orderNew = (movies: MovieData[]): MovieData[] =>
       return 0;
     }
   });
+
 const orderOld = (movies: MovieData[]) =>
   movies.sort((a, b) => {
     if (new Date(a.release_date) < new Date(b.release_date)) {
@@ -62,13 +62,11 @@ const orderOld = (movies: MovieData[]) =>
       return 0;
     }
   });
+
 const sortDefault = (movies: MovieData[]): MovieData[] => {
-  // Usar el método sort para ordenar las películas por popularidad descendente
   return movies.sort((a, b) => b.popularity - a.popularity);
 };
 
-
-// Esta function obtiene los generos de la API y los retorna como un array de Generos
 export const getGenres = (): Promise<GenreData[]> =>
   new Promise((resolve, reject) => {
     const options = {

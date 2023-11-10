@@ -6,9 +6,7 @@ import Home from './components/home';
 import Pages from './components/pages';
 
 function App () {
-  // Estado para todas las películas
   const [allMovies, setAllMovies] = useState<MovieData[]>([]);
-  // Estado para películas filtradas
   const [filteredMovies, setFilteredMovies] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
   const [initial, setInitial] = useState<string>('1900-01-01');

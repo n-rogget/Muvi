@@ -6,7 +6,6 @@ describe('Pages', () => {
     const setPage = jest.fn();
     const { getByText } = render(<Pages setPage={setPage} page={1} />);
 
-    // Verifica que los botones "Anterior" y "Siguiente" estén presentes en el componente.
     expect(getByText('Inicio')).toBeDefined();
     expect(getByText('Anterior')).toBeDefined();
     expect(getByText('Siguiente')).toBeDefined();
@@ -17,7 +16,6 @@ describe('Pages', () => {
     const setPage = jest.fn();
     const { getByText } = render(<Pages setPage={setPage} page={3} />);
 
-    // Simula hacer clic en el botón "Inicio".
     fireEvent.click(getByText('Inicio'));
     expect(setPage).toHaveBeenCalledWith(1);
   });

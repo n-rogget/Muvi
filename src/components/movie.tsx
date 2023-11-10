@@ -5,8 +5,6 @@ import { getMovieInfo } from '../config/config';
 import LogoMuvi from '../images/LogoMuvi.png';
 import Notfound from '../images/Notfound.png';
 
-
-
 export default function MovieDetails () {
   const [movie, setMovie] = useState<MovieInfo>();
   const { movieId } = useParams();
@@ -17,16 +15,13 @@ export default function MovieDetails () {
       })
       .catch((error) => console.log('ERROR: ', error));
   }, [movieId]);
-
   const getTotalVotes = (vote_average: number): number => {
     const result = (vote_average * 5) / 10.0;
     const starts = Math.round(result);
     return starts;
   };
-
   const renderVotes = (starts: number): Start[] => {
     const arrayStarts = [];
-
     for (let index = 0; index <= 5; index++) {
       if (index + 1 <= starts) {
         arrayStarts.push({ start: index + 1, status: true });
@@ -36,7 +31,6 @@ export default function MovieDetails () {
     }
     return arrayStarts;
   };
-
   return (
     <section className='SectionMovie' id='sectionMovie' >
       <section className='logo-movie'>
@@ -48,7 +42,6 @@ export default function MovieDetails () {
           />
         </Link>
       </section>
-
       <section className='img-info'>
         <section className='imagen-section'>
           <img
@@ -59,9 +52,7 @@ export default function MovieDetails () {
             }}
             alt=''
           />
-
         </section>
-
         <section className='info'>
           <section className='section-title'>
             <p className='title-info'>{movie?.title}</p>
@@ -92,8 +83,6 @@ export default function MovieDetails () {
           <button className='back'>Regresar </button>
         </Link>
       </section>
-
-
     </section>
   );
 }

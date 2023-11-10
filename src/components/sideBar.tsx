@@ -15,39 +15,27 @@ import LogoMuvi from '../images/LogoMuvi.png';
 import Filtrar from '../images/Filtrar.png';
 import Ordenar from '../images/Ordenar.png';
 
-
 interface SidebarProps {
-  // fx para actualizar estado de un número (cambia valor de filtered movies)
   setFilteredMovies: Dispatch<SetStateAction<number>>;
   filteredMovies: number;
-  //Actualizar valor inicial de fechas
   setInitial: Dispatch<SetStateAction<string>>;
   setFinal: Dispatch<SetStateAction<string>>;
-  //Actualiza el estado de sortby
   setSortBy: Dispatch<SetStateAction<string>>;
 }
 export default function Sidebar ({
   setFilteredMovies,
-  /* filteredMovies */
   setInitial,
   setFinal,
   setSortBy
 }: SidebarProps) {
-
-
-  //hook de estado (useState) para guardar  el array de generos
-  // Variable de estado genres, se inicia como array vacío de GenreDaata
-  // setGenres, actualiza valor de genres
   const [genres, setGenres] = useState<GenreData[]>([]);
   useEffect(() => {
     getGenres()
-      // data es el resultado de la promesa y se espera que sea un array de obj de GenreData
       .then((data: GenreData[]) => {
         setGenres(data);
       })
       .catch((error) => console.error(error));
   }, []);
-
   return (
     <section className='side'>
       <img
@@ -55,9 +43,7 @@ export default function Sidebar ({
         className='logoHome'
         onClick={() => window.location.reload()}
       />
-
       <section id='main'>
-
         <section className='filter'>
           <h4> <img src={Filtrar}
             alt='filtrar'
@@ -138,8 +124,6 @@ export default function Sidebar ({
                 value={'old'}
                 className='orderYear' >
                 Más antiguas</option>
-
-
             </select>
           </section>
         </section>

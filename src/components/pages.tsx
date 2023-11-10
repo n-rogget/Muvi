@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
 interface PaginationProps {
-
   setPage: Dispatch<SetStateAction<number>>;
   page: number;
 }
@@ -23,7 +22,6 @@ export default function Pages ({ setPage, page }: PaginationProps) {
         <i className='fa-solid fa-arrow-left'></i>
         Anterior
       </button>
-
       <button
         className='btn-aft'
         id='page-after'

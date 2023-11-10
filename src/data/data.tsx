@@ -14,10 +14,12 @@ export type MovieData = {
   vote_average: number;
   vote_count: number;
 };
+
 export type GenreData = {
   id: number;
   name: string;
 };
+
 export type  Companie = {
   id: number;
   logo_path: string;
@@ -36,7 +38,6 @@ export type Language = {
   name: string;
 }
 
-// Tipo de dato MovieDetail para obtener los detalles de las peliculas.
 export type MovieInfo = {
   adult: boolean;
   backdrop_path: string;

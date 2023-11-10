@@ -22,7 +22,7 @@ describe('Home', () => {
     consoleLogSpy.mockRestore();
     consoleErrorSpy.mockRestore();
   });
-  it('Debe renderizar una lista de películas de terror y suspenso', async () => {
+  test('Debe renderizar una lista de películas de terror y suspenso', async () => {
     const movies: MovieData[] = [
       {
         'adult': false,
@@ -75,8 +75,8 @@ describe('Home', () => {
       expect(getAllByText(/Los mercenarios 4/).length).toBe(1);
     });
   });
-  test('Debería poner imagen predeterminada si hay error con la original', () => {
 
+  test('Debería poner imagen predeterminada si hay error con la original', () => {
     const movie =
     {
       adult: true,
@@ -95,21 +95,15 @@ describe('Home', () => {
       vote_count: 65,
     }
       ;
-
     render(
       <MemoryRouter>
         <Home movies={[movie]} />
       </MemoryRouter>);
-
-    // Busca el elemento img
     const imgElement = screen.getByAltText('') as HTMLImageElement;
-
-    // Simula un evento de error en la imagen
     const errorEvent = new Event('error');
     Object.defineProperty(imgElement, 'src', { writable: true });
     imgElement.src = 'initial-source.jpg';
     imgElement.dispatchEvent(errorEvent);
-
     expect(imgElement.getAttribute('src'))
       .toBe('https://image.tmdb.org/t/p/w154/src/images/Notfound.png');
   });
