@@ -1,7 +1,7 @@
 #  MUVI
 
 <p align="center">
-<img src="/src/images/LogoMuvi.png" alt="LOGO" width="300" height="150">
+<img src="/src/images/LogoMuvi.png" alt="LOGO" width="150" height="150">
 </p>
 
 **MUVI** es la plataforma donde puedes encontrar información de tus películas favoritas de **terror** y **suspenso**, aquí podrás
@@ -30,9 +30,9 @@ Para la construcción de MUVI se utilizó lo siguiente:
 1. **Prototipo de baja fidelidad**: Este diseño fue entregado por el product owner.
 
 ![Prototipo de baja fidelidad](src/images/Protobaja2.png)
-![Prototipo de baja fidelidad](src/images/Protobaja1.png)
+![Prototipo de baja fidelidad](src/images/ProtoBaja1.png)
 
-2. **Prototipo de alta fidelidad**: Este diseño fue realizado en [figma] (https://www.figma.com/proto/1vGlrHd4w9yGh3cgGfTLaY/Untitled?type=design&node-id=1-4&t=yiA41hmUi51H1sUS-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A4&mode=design).
+2. **Prototipo de alta fidelidad**: Este diseño fue realizado en [figma](https://www.figma.com/proto/1vGlrHd4w9yGh3cgGfTLaY/Untitled?type=design&node-id=1-4&t=yiA41hmUi51H1sUS-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A4&mode=design).
 
 ![Prototipo de alta fidelidad](src/images/Prototipo1.png)
 ![Prototipo de alta fidelidad](src/images/Prototipo2.png)
@@ -40,6 +40,7 @@ Para la construcción de MUVI se utilizó lo siguiente:
 
 3. **Desarrollo**: MUVI se desarrolló en base a los prototipos buscando siempre un diseño intuitivo y fácil
 de comprender para el usuario.
+
 No olvides visitar **[MUVI](https://muvi-nine.vercel.app)**
 
 
