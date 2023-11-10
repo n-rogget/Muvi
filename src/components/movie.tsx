@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { GenreData, MovieInfo, Start, /* Start */ } from '../data/data';
+import { GenreData, MovieInfo, Start } from '../data/data';
 import { Link, useParams } from 'react-router-dom';
 import { getMovieInfo } from '../config/config';
 import LogoMuvi from '../images/LogoMuvi.png';
-import Notfound from '../images/Notfound.png'
+import Notfound from '../images/Notfound.png';
 
 
 
-export default function MovieDetails() {
+export default function MovieDetails () {
   const [movie, setMovie] = useState<MovieInfo>();
   const { movieId } = useParams();
   useEffect(() => {
@@ -40,14 +40,15 @@ export default function MovieDetails() {
   return (
     <section className='SectionMovie' id='sectionMovie' >
       <section className='logo-movie'>
-        <img
-          src={LogoMuvi}
-          className='logoHome'
-          id='imgLogo'
-        />
-       
+        <Link className='closeBtn' to={'/'}>
+          <img
+            src={LogoMuvi}
+            className='logoHome'
+            id='imgLogo'
+          />
+        </Link>
       </section>
-      
+
       <section className='img-info'>
         <section className='imagen-section'>
           <img
@@ -62,10 +63,10 @@ export default function MovieDetails() {
         </section>
 
         <section className='info'>
-        <section className='section-title'>
-          <p className='title-info'>{movie?.title}</p>
-          <p className='yearP'>{new Date(movie?.release_date || '').getFullYear()}</p>
-        </section>
+          <section className='section-title'>
+            <p className='title-info'>{movie?.title}</p>
+            <p className='yearP'>{new Date(movie?.release_date || '').getFullYear()}</p>
+          </section>
           <p className='infoMovie'>{movie?.overview}</p>
           <section className='votesSection'>
             <p className='percent'>{movie?.vote_average.toFixed(2)}%</p>
@@ -81,7 +82,8 @@ export default function MovieDetails() {
               )} votos
             </p>
           </section>
-          <p className='category'> {movie?.genres.filter((genre) => genre.id === 27 || genre.id === 53)
+          <p className='category'> {movie?.genres
+            .filter((genre) => genre.id === 27 || genre.id === 53)
             .map((genre: GenreData) => genre.name).join(', ')}</p>
         </section>
       </section>

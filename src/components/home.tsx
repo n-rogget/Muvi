@@ -6,8 +6,7 @@ interface HomeProps {
   movies: MovieData[];
 }
 // como argumento se le pasa el objeto
-export default function Home({ movies }: HomeProps) {
-
+export default function Home ({ movies }: HomeProps) {
   return (
     <section className='grid-muvi'>
       {movies.map((movie: MovieData) => (

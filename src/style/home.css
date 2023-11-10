@@ -1,6 +1,11 @@
 /* .menu {
 
 } */
+
+@font-face {
+  font-family: Daaron;
+  src: url('/Daaron-Round.ttf');
+}
 .grid-muvi{
   display: flex;
   flex-direction: row;
@@ -60,14 +65,16 @@ box-shadow: 0px 0px 20px 4px rgba(5,5,5,0.98);
  width: 95%;
  text-align: center;
  margin: 4px;
- font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ font-family: Alborii;
 }
 
 .muvi-date {
   color: #F8F9F6;
   text-align: center;
   margin: 4px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Daaron;
+  font-size: 12px;
+
 }
 
 .img-muvi {

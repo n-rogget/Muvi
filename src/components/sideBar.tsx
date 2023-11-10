@@ -110,7 +110,6 @@ export default function Sidebar ({
               maxLength={4}
               data-testid={'aniosMax'}
               onChange={(event) => {
-                console.log('finalYear input:', event.target.value);
                 const formateDate = `${event.target.value}`;
                 setFinal(formateDate);
               }}

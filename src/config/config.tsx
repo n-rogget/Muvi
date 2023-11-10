@@ -18,7 +18,6 @@ export const getMovies = (
         Authorization: API_KEY
       }
     };
-    console.log(filteredMovies);
     fetch(
       `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es&page=${page}&primary_release_date.gte=${initial}&primary_release_date.lte=${final}&sort_by=popularity.desc&with_genres=${filteredMovies > 0 ? filteredMovies : '27||53'
       }`,

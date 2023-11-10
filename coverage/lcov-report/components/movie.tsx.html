@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.54% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/31</span>
+                <span class='fraction'>28/30</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">93.1% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/30</span>
+                <span class='fraction'>27/29</span>
             </div>
         
             
@@ -160,7 +160,8 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -175,7 +176,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -244,6 +244,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,25 +258,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useState } from "react";
-import { GenreData, MovieInfo, Start, /* Start */ } from "../data/data";
-import { Link, useParams } from "react-router-dom";
-import { getMovieInfo } from "../config/config";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useState } from 'react';
+import { GenreData, MovieInfo, Start, /* Start */ } from '../data/data';
+import { Link, useParams } from 'react-router-dom';
+import { getMovieInfo } from '../config/config';
 import LogoMuvi from '../images/LogoMuvi.png';
-import Notfound from '../images/Notfound.png'
+import Notfound from '../images/Notfound.png';
 &nbsp;
 &nbsp;
 &nbsp;
-export default function MovieDetails() {
+export default function MovieDetails () {
   const [movie, setMovie] = useState&lt;MovieInfo&gt;();
   const { movieId } = useParams();
   useEffect(() =&gt; {
     getMovieInfo(Number(movieId))
       .then((data) =&gt; {
-        console.log("INFO: ", data);
         setMovie(data);
       })
-      .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >console.log("ERROR: ", error))</span>;
+      .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >console.log('ERROR: ', error))</span>;
   }, [movieId]);
 &nbsp;
   const getTotalVotes = (vote_average: number): number =&gt; {
@@ -298,70 +299,72 @@ export default function MovieDetails() {
   };
 &nbsp;
   return (
-    &lt;section className="SectionMovie" id="sectionMovie" &gt;
-      &lt;section className="logo-movie"&gt;
+    &lt;section className='SectionMovie' id='sectionMovie' &gt;
+      &lt;section className='logo-movie'&gt;
         &lt;img
           src={LogoMuvi}
-          className="logoHome"
-          id="imgLogo"
+          className='logoHome'
+          id='imgLogo'
         /&gt;
-       
+&nbsp;
       &lt;/section&gt;
-      
-      &lt;section className="img-info"&gt;
-        &lt;section className="imagen-section"&gt;
+&nbsp;
+      &lt;section className='img-info'&gt;
+        &lt;section className='imagen-section'&gt;
           &lt;img
-            className="movie-img"
+            className='movie-img'
             src={`https://image.tmdb.org/t/p/w154/${movie?.poster_path}`}
             onError={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >              e.currentTarget.src = Notfound;</span>
             }}
-            alt=""
+            alt=''
           /&gt;
 &nbsp;
         &lt;/section&gt;
 &nbsp;
-        &lt;section className="info"&gt;
-        &lt;section className="section-title"&gt;
-          &lt;p className="title-info"&gt;{movie?.title}&lt;/p&gt;
-          &lt;p className="yearP"&gt;{new Date(movie?.release_date || "").getFullYear()}&lt;/p&gt;
-        &lt;/section&gt;
-          &lt;p className="infoMovie"&gt;{movie?.overview}&lt;/p&gt;
-          &lt;section className="votesSection"&gt;
-            &lt;p className="percent"&gt;{movie?.vote_average.toFixed(2)}%&lt;/p&gt;
-            &lt;p className="votes"&gt;
-              {movie?.vote_count}{" "}
+        &lt;section className='info'&gt;
+          &lt;section className='section-title'&gt;
+            &lt;p className='title-info'&gt;{movie?.title}&lt;/p&gt;
+            &lt;p className='yearP'&gt;{new Date(movie?.release_date || '').getFullYear()}&lt;/p&gt;
+          &lt;/section&gt;
+          &lt;p className='infoMovie'&gt;{movie?.overview}&lt;/p&gt;
+          &lt;section className='votesSection'&gt;
+            &lt;p className='percent'&gt;{movie?.vote_average.toFixed(2)}%&lt;/p&gt;
+            &lt;p className='votes'&gt;
+              {movie?.vote_count}{' '}
               {renderVotes(getTotalVotes(movie?.vote_average || 0)).map(
                 (start: Start) =&gt;
                   start.status ? (
-                    &lt;i className="fa-solid fa-star" /&gt;
+                    &lt;i className='fa-solid fa-star' /&gt;
                   ) : (
-                    &lt;i className="fa-regular fa-star" /&gt;
+                    &lt;i className='fa-regular fa-star' /&gt;
                   )
               )} votos
             &lt;/p&gt;
           &lt;/section&gt;
-          &lt;p className="category"&gt; {movie?.genres.filter((genre) =&gt; genre.id === 27 || genre.id === 53)
-            .map((genre: GenreData) =&gt; genre.name).join(", ")}&lt;/p&gt;
+          &lt;p className='category'&gt; {movie?.genres
+            .filter((genre) =&gt; genre.id === 27 || genre.id === 53)
+            .map((genre: GenreData) =&gt; genre.name).join(', ')}&lt;/p&gt;
         &lt;/section&gt;
       &lt;/section&gt;
-      &lt;section className="backBttn"&gt;
-        &lt;Link className="closeBtn" to={"/"}&gt;
-          &lt;button className="back"&gt;Regresar &lt;/button&gt;
+      &lt;section className='backBtn'&gt;
+        &lt;Link className='closeBtn' to={'/'}&gt;
+          &lt;button className='back'&gt;Regresar &lt;/button&gt;
         &lt;/Link&gt;
       &lt;/section&gt;
 &nbsp;
 &nbsp;
     &lt;/section&gt;
   );
-}</pre></td></tr></table></pre>
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-09T21:20:56.630Z
+                at 2023-11-09T22:07:56.126Z
             </div>
         <script src="../prettify.js"></script>
         <script>
