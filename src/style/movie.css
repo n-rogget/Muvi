@@ -39,7 +39,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  height: auto;
+  margin: 5px;
 }
 
 .movie-img {
@@ -148,11 +149,11 @@ p {
     display: flex;
     flex-direction: column;
     padding: 15px;
-    height: 100vh;
+    height: 100%;
     align-items: center;
-  }
+}
   .img-info {
-    height: auto;
+    height: 100%;
     margin-bottom: 30px;
     width: 70%;
     overflow-y: auto;
