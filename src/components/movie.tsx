@@ -73,7 +73,7 @@ export default function MovieDetails () {
               )} votos
             </p>
           </section>
-          <p className='category'> {movie?.genres
+          <p className='category-muvi'> {movie?.genres
             .filter((genre) => genre.id === 27 || genre.id === 53)
             .map((genre: GenreData) => genre.name).join(', ')}</p>
         </section>
