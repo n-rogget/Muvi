@@ -2,14 +2,12 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+  padding: 3%;
   text-align: center
 }
 
 .pages button {
-  width: 100px;
-  height: 40px;
-  height: 35npmpx;
+ 
   background-color: rgba(214, 29, 35, 0);
   color: #F8F9F6;
   font-size: 16px;
@@ -30,4 +28,15 @@
   color: #b01616;
   transition: all 0.5s ease-in-out;
   transform: scale(1.2)
+}
+@media (max-width: 790px) {
+  .pages {
+    padding: 2%;
+  }
+  .pages button {
+    font-size: 14px;
+    height: 30px;
+    width: 75px;
+    margin: -4px;
+  }
 }

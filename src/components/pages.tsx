@@ -8,34 +8,30 @@ export default function Pages ({ setPage, page }: PaginationProps) {
   return (
     <section className='pages'>
       <button
-        className='btn-first'
+        className='btn-pages'
         id='page-initial'
         onClick={() => { setPage(1); }}>
-        <i className='fa-solid fa-arrow-left'></i>
         Inicio
       </button>
       <button
-        className='btn-bef'
+        className='btn-pages'
         id='page-before'
         onClick={() => { setPage(page > 1 ? page - 1 : 1); }}
       >
-        <i className='fa-solid fa-arrow-left'></i>
         Anterior
       </button>
       <button
-        className='btn-aft'
+        className='btn-pages'
         id='page-after'
         onClick={() => { setPage(page + 1); }}
       >
         Siguiente
-        <i className='fa-solid fa-arrow-right'></i>
       </button>
       <button
-        className='btn-last'
+        className='btn-pages'
         id='page-last'
         onClick={() => { setPage(500); }
         }>
-        <i className='fa-solid fa-arrow-left'></i>
         Final
       </button>
     </section>
